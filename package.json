@@ -1,0 +1,29 @@
+{
+  "name": "muyu-claw-team",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/main.ts",
+    "typecheck": "tsc --noEmit",
+    "doctor": "tsx src/scripts/doctor.ts",
+    "db:init": "tsx src/scripts/init-db.ts",
+    "deps:up": "docker compose up -d postgres redis",
+    "deps:down": "docker compose down"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/pg": "^8.20.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.2.92",
+    "discord.js": "^14.26.2",
+    "dotenv": "^17.4.1",
+    "ioredis": "^5.10.1",
+    "pg": "^8.20.0",
+    "uuid": "^13.0.0",
+    "zod": "^4.3.6"
+  }
+}

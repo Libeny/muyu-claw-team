@@ -1,0 +1,7 @@
+{
+  "id": "ops",
+  "name": "Operations Agent",
+  "runtime": "claude",
+  "skill_mode": "allowlist",
+  "allowed_tools": ["Read", "Write", "Edit", "Bash", "WebFetch"]
+}

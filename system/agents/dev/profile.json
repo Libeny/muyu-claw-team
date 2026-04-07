@@ -1,0 +1,7 @@
+{
+  "id": "dev",
+  "name": "Development Agent",
+  "runtime": "claude",
+  "skill_mode": "allowlist",
+  "allowed_tools": ["Read", "Edit", "Write", "Bash", "Glob", "Grep"]
+}

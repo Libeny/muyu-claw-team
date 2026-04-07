@@ -1,0 +1,7 @@
+node_modules/
+.env
+.env.local
+config/bots.local.json
+var/data/
+var/logs/
+.DS_Store

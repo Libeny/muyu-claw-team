@@ -1,0 +1,649 @@
+2026-04-07T11:56:24.322Z [DEBUG] Watching for changes in setting files /var/folders/kj/xxsrf2495c7f41by45kc3gsc0000gn/T/claude-settings-195c0058-8995-4d01-941c-185454329b08.json...
+2026-04-07T11:56:24.369Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (46.0ms): security find-generic-password -a $USER -w -s "Claude Code"
+2026-04-07T11:56:24.381Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (11.5ms): security find-generic-password -a "limuyu" -w -s "Claude Code-credentials"
+2026-04-07T11:56:24.383Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-04-07T11:56:24.383Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-04-07T11:56:24.383Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-04-07T11:56:24.384Z [DEBUG] LSP server manager initialized successfully
+2026-04-07T11:56:24.384Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-04-07T11:56:24.385Z [DEBUG] Applying permission update: Adding 7 allow rule(s) to destination 'flagSettings': ["Read(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Edit(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Write(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Read(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Edit(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Write(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Read(/Users/limuyu/work/muyu-claw-team/system/**)"]
+2026-04-07T11:56:24.386Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-04-07T11:56:24.390Z [DEBUG] Stats cache does not exist, returning empty cache
+2026-04-07T11:56:24.390Z [DEBUG] Stats cache empty, processing all historical data in background
+2026-04-07T11:56:24.390Z [DEBUG] Plugin autoupdate: skipped (auto-updater disabled)
+2026-04-07T11:56:24.398Z [DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/skills, project=[/Users/limuyu/.claude/skills]
+2026-04-07T11:56:24.409Z [DEBUG] [SLOW OPERATION DETECTED] fs.readdirSync (7.0ms)
+2026-04-07T11:56:24.419Z [DEBUG] [SLOW OPERATION DETECTED] fs.readFileSync (5.2ms)
+2026-04-07T11:56:24.518Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (72.7ms): ps aux | grep -E "Visual Studio Code|Code Helper|Cursor Helper|Windsurf Helper|IntelliJ IDEA|PyCharm
+2026-04-07T11:56:24.519Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-04-07T11:56:24.532Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2026-04-07T11:56:24.532Z [DEBUG] Looking for shell config file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc
+2026-04-07T11:56:24.532Z [DEBUG] Shell config file not found: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc, creating snapshot with Claude Code defaults only
+2026-04-07T11:56:24.533Z [DEBUG] Snapshots directory: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots
+2026-04-07T11:56:24.533Z [DEBUG] Creating snapshot at: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots/snapshot-zsh-1775562984532-qugy0x.sh
+2026-04-07T11:56:24.533Z [DEBUG] Shell binary exists: true
+2026-04-07T11:56:24.533Z [DEBUG] Execution timeout: 10000ms
+2026-04-07T11:56:24.534Z [DEBUG] Writing to temp file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/749a4c5b-0ab4-40d8-935f-ac535270c53c-agent-749a4c5b-0ab4-40d8-935f-ac535270c53c.json.tmp.63904.1775562984534
+2026-04-07T11:56:24.553Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (19.1ms)
+2026-04-07T11:56:24.553Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-04-07T11:56:24.553Z [DEBUG] Renaming /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/749a4c5b-0ab4-40d8-935f-ac535270c53c-agent-749a4c5b-0ab4-40d8-935f-ac535270c53c.json.tmp.63904.1775562984534 to /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/749a4c5b-0ab4-40d8-935f-ac535270c53c-agent-749a4c5b-0ab4-40d8-935f-ac535270c53c.json
+2026-04-07T11:56:24.553Z [DEBUG] File /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/749a4c5b-0ab4-40d8-935f-ac535270c53c-agent-749a4c5b-0ab4-40d8-935f-ac535270c53c.json written atomically
+2026-04-07T11:56:24.553Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-04-07T11:56:24.553Z [DEBUG] Total plugin skills loaded: 0
+2026-04-07T11:56:24.553Z [DEBUG] Total plugin commands loaded: 0
+2026-04-07T11:56:24.554Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-04-07T11:56:24.556Z [DEBUG] Loaded 15 unique skills (managed: 0, user: 2, project: 13, duplicates removed: 0)
+2026-04-07T11:56:24.556Z [DEBUG] getSkills returning: 15 skill dir commands, 0 plugin skills
+2026-04-07T11:56:24.560Z [DEBUG] Shell snapshot created successfully (1552 bytes)
+2026-04-07T11:56:24.560Z [DEBUG] Git remote URL: null
+2026-04-07T11:56:24.560Z [DEBUG] No git remote URL found
+2026-04-07T11:56:24.560Z [DEBUG] Not in a GitHub repository, skipping path mapping update
+2026-04-07T11:56:24.586Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/opt/homebrew/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+2026-04-07T11:56:24.609Z [DEBUG] Total plugin agents loaded: 0
+2026-04-07T11:56:24.617Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-04-07T11:56:24.626Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-04-07T11:56:24.626Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T11:56:24.626Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-04-07T11:56:24.627Z [DEBUG] Total plugin output styles loaded: 0
+2026-04-07T11:56:24.637Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (9.8ms)
+2026-04-07T11:56:24.640Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2026-04-07T11:56:24.640Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T11:56:24.640Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-04-07T11:56:24.641Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2026-04-07T11:56:24.641Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T11:56:24.641Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2026-04-07T11:56:24.643Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-04-07T11:56:24.643Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-04-07T11:56:24.643Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-04-07T11:56:24.643Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-04-07T11:56:24.644Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-04-07T11:56:24.644Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T11:56:24.644Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T11:56:24.648Z [DEBUG] Slash commands included in SlashCommand tool:
+2026-04-07T11:56:24.648Z [DEBUG] Skills and commands included in Skill tool: browser-use, form-testing-guide, frontend-code-analyzer, frontend-test-execution, get-ugate-token, icafe-card-manager, icode-commit-workflow, icode-git, mcp-automation-guide, nexa-knowledge-reader, notebooklm, skill-creator, skill-recommender
+2026-04-07T11:56:24.683Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (14.9ms)
+2026-04-07T11:56:25.015Z [DEBUG] Stream started - received first chunk
+2026-04-07T11:56:27.428Z [DEBUG] Stream started - received first chunk
+2026-04-07T11:56:27.593Z [DEBUG] Stream started - received first chunk
+2026-04-07T11:56:29.005Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-04-07T11:56:29.005Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T11:56:29.005Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T11:56:29.950Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-04-07T11:56:29.950Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T11:56:29.950Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T11:56:29.951Z [DEBUG] Getting matching hook commands for SessionEnd with query: other
+2026-04-07T11:56:29.951Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T11:56:29.951Z [DEBUG] Matched 0 unique hooks for query "other" (0 before deduplication)
+2026-04-07T12:06:38.233Z [DEBUG] Watching for changes in setting files /var/folders/kj/xxsrf2495c7f41by45kc3gsc0000gn/T/claude-settings-b69ef820-8a09-4431-b32f-d1016d139762.json...
+2026-04-07T12:06:38.251Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (16.3ms): security find-generic-password -a $USER -w -s "Claude Code"
+2026-04-07T12:06:38.275Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (24.2ms): security find-generic-password -a "limuyu" -w -s "Claude Code-credentials"
+2026-04-07T12:06:38.278Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-04-07T12:06:38.278Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-04-07T12:06:38.278Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-04-07T12:06:38.278Z [DEBUG] LSP server manager initialized successfully
+2026-04-07T12:06:38.279Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-04-07T12:06:38.280Z [DEBUG] Applying permission update: Adding 7 allow rule(s) to destination 'flagSettings': ["Read(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Edit(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Write(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Read(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Edit(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Write(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Read(/Users/limuyu/work/muyu-claw-team/system/**)"]
+2026-04-07T12:06:38.282Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-04-07T12:06:38.284Z [DEBUG] Stats cache does not exist, returning empty cache
+2026-04-07T12:06:38.284Z [DEBUG] Stats cache empty, processing all historical data in background
+2026-04-07T12:06:38.285Z [DEBUG] Plugin autoupdate: skipped (auto-updater disabled)
+2026-04-07T12:06:38.289Z [DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/skills, project=[/Users/limuyu/.claude/skills]
+2026-04-07T12:06:38.364Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (65.6ms): ps aux | grep -E "Visual Studio Code|Code Helper|Cursor Helper|Windsurf Helper|IntelliJ IDEA|PyCharm
+2026-04-07T12:06:38.365Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-04-07T12:06:38.379Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2026-04-07T12:06:38.379Z [DEBUG] Looking for shell config file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc
+2026-04-07T12:06:38.379Z [DEBUG] Shell config file not found: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc, creating snapshot with Claude Code defaults only
+2026-04-07T12:06:38.379Z [DEBUG] Snapshots directory: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots
+2026-04-07T12:06:38.379Z [DEBUG] Creating snapshot at: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots/snapshot-zsh-1775563598379-k4kyu2.sh
+2026-04-07T12:06:38.379Z [DEBUG] Shell binary exists: true
+2026-04-07T12:06:38.379Z [DEBUG] Execution timeout: 10000ms
+2026-04-07T12:06:38.380Z [DEBUG] Writing to temp file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/c3cb233d-d50b-407e-8448-594ac2b986bf-agent-c3cb233d-d50b-407e-8448-594ac2b986bf.json.tmp.72099.1775563598380
+2026-04-07T12:06:38.384Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-04-07T12:06:38.384Z [DEBUG] Renaming /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/c3cb233d-d50b-407e-8448-594ac2b986bf-agent-c3cb233d-d50b-407e-8448-594ac2b986bf.json.tmp.72099.1775563598380 to /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/c3cb233d-d50b-407e-8448-594ac2b986bf-agent-c3cb233d-d50b-407e-8448-594ac2b986bf.json
+2026-04-07T12:06:38.384Z [DEBUG] File /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/c3cb233d-d50b-407e-8448-594ac2b986bf-agent-c3cb233d-d50b-407e-8448-594ac2b986bf.json written atomically
+2026-04-07T12:06:38.385Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-04-07T12:06:38.385Z [DEBUG] Total plugin skills loaded: 0
+2026-04-07T12:06:38.385Z [DEBUG] Total plugin commands loaded: 0
+2026-04-07T12:06:38.385Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-04-07T12:06:38.387Z [DEBUG] Loaded 15 unique skills (managed: 0, user: 2, project: 13, duplicates removed: 0)
+2026-04-07T12:06:38.387Z [DEBUG] getSkills returning: 15 skill dir commands, 0 plugin skills
+2026-04-07T12:06:38.390Z [DEBUG] Git remote URL: null
+2026-04-07T12:06:38.390Z [DEBUG] No git remote URL found
+2026-04-07T12:06:38.390Z [DEBUG] Not in a GitHub repository, skipping path mapping update
+2026-04-07T12:06:38.395Z [DEBUG] Shell snapshot created successfully (1552 bytes)
+2026-04-07T12:06:38.395Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/opt/homebrew/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+2026-04-07T12:06:38.398Z [DEBUG] Total plugin agents loaded: 0
+2026-04-07T12:06:38.405Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-04-07T12:06:38.414Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2026-04-07T12:06:38.414Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:06:38.414Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-04-07T12:06:38.415Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2026-04-07T12:06:38.415Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:06:38.415Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2026-04-07T12:06:38.417Z [DEBUG] Getting matching hook commands for SessionStart with query: resume
+2026-04-07T12:06:38.417Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:06:38.417Z [DEBUG] Matched 0 unique hooks for query "resume" (0 before deduplication)
+2026-04-07T12:06:38.419Z [DEBUG] Total plugin output styles loaded: 0
+2026-04-07T12:06:38.423Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-04-07T12:06:38.423Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-04-07T12:06:38.424Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-04-07T12:06:38.424Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-04-07T12:06:38.424Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-04-07T12:06:38.424Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:06:38.424Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T12:06:38.427Z [DEBUG] Slash commands included in SlashCommand tool:
+2026-04-07T12:06:38.428Z [DEBUG] Skills and commands included in Skill tool: browser-use, form-testing-guide, frontend-code-analyzer, frontend-test-execution, get-ugate-token, icafe-card-manager, icode-commit-workflow, icode-git, mcp-automation-guide, nexa-knowledge-reader, notebooklm, skill-creator, skill-recommender
+2026-04-07T12:06:38.452Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (10.3ms)
+2026-04-07T12:06:38.797Z [DEBUG] Stream started - received first chunk
+2026-04-07T12:06:44.334Z [DEBUG] Stream started - received first chunk
+2026-04-07T12:06:44.773Z [DEBUG] Stream started - received first chunk
+2026-04-07T12:06:51.504Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-04-07T12:06:51.504Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:06:51.504Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T12:06:51.504Z [DEBUG] Getting matching hook commands for SessionEnd with query: other
+2026-04-07T12:06:51.504Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:06:51.504Z [DEBUG] Matched 0 unique hooks for query "other" (0 before deduplication)
+2026-04-07T12:06:54.547Z [DEBUG] Watching for changes in setting files /var/folders/kj/xxsrf2495c7f41by45kc3gsc0000gn/T/claude-settings-a1274564-7b0f-45c9-bc1e-33c6e5a960ab.json...
+2026-04-07T12:06:54.564Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (16.2ms): security find-generic-password -a $USER -w -s "Claude Code"
+2026-04-07T12:06:54.576Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (12.1ms): security find-generic-password -a "limuyu" -w -s "Claude Code-credentials"
+2026-04-07T12:06:54.579Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-04-07T12:06:54.579Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-04-07T12:06:54.579Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-04-07T12:06:54.579Z [DEBUG] LSP server manager initialized successfully
+2026-04-07T12:06:54.580Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-04-07T12:06:54.581Z [DEBUG] Applying permission update: Adding 7 allow rule(s) to destination 'flagSettings': ["Read(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Edit(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Write(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Read(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Edit(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Write(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Read(/Users/limuyu/work/muyu-claw-team/system/**)"]
+2026-04-07T12:06:54.582Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-04-07T12:06:54.583Z [DEBUG] Stats cache does not exist, returning empty cache
+2026-04-07T12:06:54.584Z [DEBUG] Stats cache empty, processing all historical data in background
+2026-04-07T12:06:54.584Z [DEBUG] Plugin autoupdate: skipped (auto-updater disabled)
+2026-04-07T12:06:54.588Z [DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/skills, project=[/Users/limuyu/.claude/skills]
+2026-04-07T12:06:54.661Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (68.3ms): ps aux | grep -E "Visual Studio Code|Code Helper|Cursor Helper|Windsurf Helper|IntelliJ IDEA|PyCharm
+2026-04-07T12:06:54.662Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-04-07T12:06:54.676Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2026-04-07T12:06:54.676Z [DEBUG] Looking for shell config file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc
+2026-04-07T12:06:54.676Z [DEBUG] Shell config file not found: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc, creating snapshot with Claude Code defaults only
+2026-04-07T12:06:54.676Z [DEBUG] Snapshots directory: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots
+2026-04-07T12:06:54.676Z [DEBUG] Creating snapshot at: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots/snapshot-zsh-1775563614676-irktpy.sh
+2026-04-07T12:06:54.676Z [DEBUG] Shell binary exists: true
+2026-04-07T12:06:54.676Z [DEBUG] Execution timeout: 10000ms
+2026-04-07T12:06:54.678Z [DEBUG] Writing to temp file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/0d8cd9bb-6c54-4055-a561-3a03c0faad48-agent-0d8cd9bb-6c54-4055-a561-3a03c0faad48.json.tmp.72454.1775563614677
+2026-04-07T12:06:54.687Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (9.9ms)
+2026-04-07T12:06:54.687Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-04-07T12:06:54.687Z [DEBUG] Renaming /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/0d8cd9bb-6c54-4055-a561-3a03c0faad48-agent-0d8cd9bb-6c54-4055-a561-3a03c0faad48.json.tmp.72454.1775563614677 to /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/0d8cd9bb-6c54-4055-a561-3a03c0faad48-agent-0d8cd9bb-6c54-4055-a561-3a03c0faad48.json
+2026-04-07T12:06:54.688Z [DEBUG] File /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/0d8cd9bb-6c54-4055-a561-3a03c0faad48-agent-0d8cd9bb-6c54-4055-a561-3a03c0faad48.json written atomically
+2026-04-07T12:06:54.688Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-04-07T12:06:54.688Z [DEBUG] Total plugin skills loaded: 0
+2026-04-07T12:06:54.688Z [DEBUG] Total plugin commands loaded: 0
+2026-04-07T12:06:54.688Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-04-07T12:06:54.691Z [DEBUG] Loaded 15 unique skills (managed: 0, user: 2, project: 13, duplicates removed: 0)
+2026-04-07T12:06:54.691Z [DEBUG] getSkills returning: 15 skill dir commands, 0 plugin skills
+2026-04-07T12:06:54.694Z [DEBUG] Shell snapshot created successfully (1552 bytes)
+2026-04-07T12:06:54.694Z [DEBUG] Git remote URL: null
+2026-04-07T12:06:54.694Z [DEBUG] No git remote URL found
+2026-04-07T12:06:54.694Z [DEBUG] Not in a GitHub repository, skipping path mapping update
+2026-04-07T12:06:54.699Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/opt/homebrew/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+2026-04-07T12:06:54.702Z [DEBUG] Total plugin agents loaded: 0
+2026-04-07T12:06:54.708Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-04-07T12:06:54.718Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2026-04-07T12:06:54.718Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:06:54.718Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-04-07T12:06:54.719Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2026-04-07T12:06:54.719Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:06:54.719Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2026-04-07T12:06:54.721Z [DEBUG] Getting matching hook commands for SessionStart with query: resume
+2026-04-07T12:06:54.721Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:06:54.721Z [DEBUG] Matched 0 unique hooks for query "resume" (0 before deduplication)
+2026-04-07T12:06:54.722Z [DEBUG] Total plugin output styles loaded: 0
+2026-04-07T12:06:54.727Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-04-07T12:06:54.727Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-04-07T12:06:54.727Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-04-07T12:06:54.727Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-04-07T12:06:54.728Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-04-07T12:06:54.728Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:06:54.728Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T12:06:54.731Z [DEBUG] Slash commands included in SlashCommand tool:
+2026-04-07T12:06:54.731Z [DEBUG] Skills and commands included in Skill tool: browser-use, form-testing-guide, frontend-code-analyzer, frontend-test-execution, get-ugate-token, icafe-card-manager, icode-commit-workflow, icode-git, mcp-automation-guide, nexa-knowledge-reader, notebooklm, skill-creator, skill-recommender
+2026-04-07T12:06:55.036Z [DEBUG] Stream started - received first chunk
+2026-04-07T12:06:57.041Z [DEBUG] Stream started - received first chunk
+2026-04-07T12:06:57.609Z [DEBUG] Stream started - received first chunk
+2026-04-07T12:07:09.424Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-04-07T12:07:09.424Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:07:09.424Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T12:07:09.425Z [DEBUG] Getting matching hook commands for SessionEnd with query: other
+2026-04-07T12:07:09.425Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:07:09.425Z [DEBUG] Matched 0 unique hooks for query "other" (0 before deduplication)
+2026-04-07T12:54:50.382Z [DEBUG] Watching for changes in setting files /var/folders/kj/xxsrf2495c7f41by45kc3gsc0000gn/T/claude-settings-d3876eed-db9a-4d8c-8d28-a63cd71375e0.json...
+2026-04-07T12:54:50.397Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (14.2ms): security find-generic-password -a $USER -w -s "Claude Code"
+2026-04-07T12:54:50.409Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (11.5ms): security find-generic-password -a "limuyu" -w -s "Claude Code-credentials"
+2026-04-07T12:54:50.412Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-04-07T12:54:50.412Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-04-07T12:54:50.412Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-04-07T12:54:50.412Z [DEBUG] LSP server manager initialized successfully
+2026-04-07T12:54:50.412Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-04-07T12:54:50.414Z [DEBUG] Applying permission update: Adding 7 allow rule(s) to destination 'flagSettings': ["Read(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Edit(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Write(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Read(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Edit(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Write(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Read(/Users/limuyu/work/muyu-claw-team/system/**)"]
+2026-04-07T12:54:50.415Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-04-07T12:54:50.416Z [DEBUG] Stats cache does not exist, returning empty cache
+2026-04-07T12:54:50.416Z [DEBUG] Stats cache empty, processing all historical data in background
+2026-04-07T12:54:50.417Z [DEBUG] Plugin autoupdate: skipped (auto-updater disabled)
+2026-04-07T12:54:50.421Z [DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/skills, project=[/Users/limuyu/.claude/skills]
+2026-04-07T12:54:50.502Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (72.5ms): ps aux | grep -E "Visual Studio Code|Code Helper|Cursor Helper|Windsurf Helper|IntelliJ IDEA|PyCharm
+2026-04-07T12:54:50.503Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-04-07T12:54:50.517Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2026-04-07T12:54:50.517Z [DEBUG] Looking for shell config file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc
+2026-04-07T12:54:50.517Z [DEBUG] Shell config file not found: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc, creating snapshot with Claude Code defaults only
+2026-04-07T12:54:50.517Z [DEBUG] Snapshots directory: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots
+2026-04-07T12:54:50.517Z [DEBUG] Creating snapshot at: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots/snapshot-zsh-1775566490517-2frqyp.sh
+2026-04-07T12:54:50.517Z [DEBUG] Shell binary exists: true
+2026-04-07T12:54:50.517Z [DEBUG] Execution timeout: 10000ms
+2026-04-07T12:54:50.518Z [DEBUG] Writing to temp file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/c60a276c-36e0-43fa-82e2-294ea3a911dc-agent-c60a276c-36e0-43fa-82e2-294ea3a911dc.json.tmp.7238.1775566490518
+2026-04-07T12:54:50.522Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-04-07T12:54:50.522Z [DEBUG] Renaming /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/c60a276c-36e0-43fa-82e2-294ea3a911dc-agent-c60a276c-36e0-43fa-82e2-294ea3a911dc.json.tmp.7238.1775566490518 to /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/c60a276c-36e0-43fa-82e2-294ea3a911dc-agent-c60a276c-36e0-43fa-82e2-294ea3a911dc.json
+2026-04-07T12:54:50.522Z [DEBUG] File /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/c60a276c-36e0-43fa-82e2-294ea3a911dc-agent-c60a276c-36e0-43fa-82e2-294ea3a911dc.json written atomically
+2026-04-07T12:54:50.523Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-04-07T12:54:50.523Z [DEBUG] Total plugin skills loaded: 0
+2026-04-07T12:54:50.523Z [DEBUG] Total plugin commands loaded: 0
+2026-04-07T12:54:50.523Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-04-07T12:54:50.525Z [DEBUG] Loaded 15 unique skills (managed: 0, user: 2, project: 13, duplicates removed: 0)
+2026-04-07T12:54:50.525Z [DEBUG] getSkills returning: 15 skill dir commands, 0 plugin skills
+2026-04-07T12:54:50.528Z [DEBUG] Shell snapshot created successfully (1552 bytes)
+2026-04-07T12:54:50.529Z [DEBUG] Git remote URL: null
+2026-04-07T12:54:50.529Z [DEBUG] No git remote URL found
+2026-04-07T12:54:50.529Z [DEBUG] Not in a GitHub repository, skipping path mapping update
+2026-04-07T12:54:50.531Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/opt/homebrew/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+2026-04-07T12:54:50.538Z [DEBUG] Total plugin agents loaded: 0
+2026-04-07T12:54:50.542Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-04-07T12:54:50.553Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2026-04-07T12:54:50.553Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:54:50.553Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-04-07T12:54:50.554Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2026-04-07T12:54:50.554Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:54:50.554Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2026-04-07T12:54:50.557Z [DEBUG] Getting matching hook commands for SessionStart with query: resume
+2026-04-07T12:54:50.557Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:54:50.557Z [DEBUG] Matched 0 unique hooks for query "resume" (0 before deduplication)
+2026-04-07T12:54:50.558Z [DEBUG] Total plugin output styles loaded: 0
+2026-04-07T12:54:50.563Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-04-07T12:54:50.563Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-04-07T12:54:50.563Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-04-07T12:54:50.563Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-04-07T12:54:50.564Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-04-07T12:54:50.564Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:54:50.564Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T12:54:50.567Z [DEBUG] Slash commands included in SlashCommand tool:
+2026-04-07T12:54:50.567Z [DEBUG] Skills and commands included in Skill tool: browser-use, form-testing-guide, frontend-code-analyzer, frontend-test-execution, get-ugate-token, icafe-card-manager, icode-commit-workflow, icode-git, mcp-automation-guide, nexa-knowledge-reader, notebooklm, skill-creator, skill-recommender
+2026-04-07T12:54:50.591Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (7.6ms)
+2026-04-07T12:54:50.879Z [DEBUG] Stream started - received first chunk
+2026-04-07T12:54:53.842Z [DEBUG] Stream started - received first chunk
+2026-04-07T12:54:54.508Z [DEBUG] Stream started - received first chunk
+2026-04-07T12:54:54.582Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-04-07T12:54:54.582Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:54:54.582Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T12:54:56.195Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-04-07T12:54:56.195Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:54:56.195Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T12:54:56.196Z [DEBUG] Getting matching hook commands for SessionEnd with query: other
+2026-04-07T12:54:56.196Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T12:54:56.196Z [DEBUG] Matched 0 unique hooks for query "other" (0 before deduplication)
+2026-04-07T13:05:11.244Z [DEBUG] Watching for changes in setting files /var/folders/kj/xxsrf2495c7f41by45kc3gsc0000gn/T/claude-settings-0d38b12f-28a6-41ce-8286-24b700f74b82.json...
+2026-04-07T13:05:11.261Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (16.1ms): security find-generic-password -a $USER -w -s "Claude Code"
+2026-04-07T13:05:11.271Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (9.5ms): security find-generic-password -a "limuyu" -w -s "Claude Code-credentials"
+2026-04-07T13:05:11.273Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-04-07T13:05:11.273Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-04-07T13:05:11.273Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-04-07T13:05:11.273Z [DEBUG] LSP server manager initialized successfully
+2026-04-07T13:05:11.273Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-04-07T13:05:11.275Z [DEBUG] Applying permission update: Adding 7 allow rule(s) to destination 'flagSettings': ["Read(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Edit(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Write(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Read(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Edit(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Write(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Read(/Users/limuyu/work/muyu-claw-team/system/**)"]
+2026-04-07T13:05:11.276Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-04-07T13:05:11.277Z [DEBUG] Stats cache does not exist, returning empty cache
+2026-04-07T13:05:11.277Z [DEBUG] Stats cache empty, processing all historical data in background
+2026-04-07T13:05:11.278Z [DEBUG] Plugin autoupdate: skipped (auto-updater disabled)
+2026-04-07T13:05:11.282Z [DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/skills, project=[/Users/limuyu/.claude/skills]
+2026-04-07T13:05:11.353Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (62.3ms): ps aux | grep -E "Visual Studio Code|Code Helper|Cursor Helper|Windsurf Helper|IntelliJ IDEA|PyCharm
+2026-04-07T13:05:11.354Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-04-07T13:05:11.369Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2026-04-07T13:05:11.369Z [DEBUG] Looking for shell config file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc
+2026-04-07T13:05:11.369Z [DEBUG] Shell config file not found: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc, creating snapshot with Claude Code defaults only
+2026-04-07T13:05:11.369Z [DEBUG] Snapshots directory: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots
+2026-04-07T13:05:11.369Z [DEBUG] Creating snapshot at: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots/snapshot-zsh-1775567111369-wbmx92.sh
+2026-04-07T13:05:11.369Z [DEBUG] Shell binary exists: true
+2026-04-07T13:05:11.369Z [DEBUG] Execution timeout: 10000ms
+2026-04-07T13:05:11.370Z [DEBUG] Writing to temp file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/c3941b59-ecea-4d06-8620-4280fae8deda-agent-c3941b59-ecea-4d06-8620-4280fae8deda.json.tmp.14938.1775567111370
+2026-04-07T13:05:11.377Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (7.5ms)
+2026-04-07T13:05:11.377Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-04-07T13:05:11.377Z [DEBUG] Renaming /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/c3941b59-ecea-4d06-8620-4280fae8deda-agent-c3941b59-ecea-4d06-8620-4280fae8deda.json.tmp.14938.1775567111370 to /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/c3941b59-ecea-4d06-8620-4280fae8deda-agent-c3941b59-ecea-4d06-8620-4280fae8deda.json
+2026-04-07T13:05:11.378Z [DEBUG] File /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/c3941b59-ecea-4d06-8620-4280fae8deda-agent-c3941b59-ecea-4d06-8620-4280fae8deda.json written atomically
+2026-04-07T13:05:11.378Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-04-07T13:05:11.378Z [DEBUG] Total plugin skills loaded: 0
+2026-04-07T13:05:11.378Z [DEBUG] Total plugin commands loaded: 0
+2026-04-07T13:05:11.378Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-04-07T13:05:11.382Z [DEBUG] Loaded 15 unique skills (managed: 0, user: 2, project: 13, duplicates removed: 0)
+2026-04-07T13:05:11.382Z [DEBUG] getSkills returning: 15 skill dir commands, 0 plugin skills
+2026-04-07T13:05:11.385Z [DEBUG] Shell snapshot created successfully (1552 bytes)
+2026-04-07T13:05:11.385Z [DEBUG] Git remote URL: null
+2026-04-07T13:05:11.385Z [DEBUG] No git remote URL found
+2026-04-07T13:05:11.385Z [DEBUG] Not in a GitHub repository, skipping path mapping update
+2026-04-07T13:05:11.460Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/opt/homebrew/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+2026-04-07T13:05:11.464Z [DEBUG] Total plugin agents loaded: 0
+2026-04-07T13:05:11.469Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-04-07T13:05:11.479Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2026-04-07T13:05:11.479Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:05:11.479Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-04-07T13:05:11.481Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2026-04-07T13:05:11.481Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:05:11.481Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2026-04-07T13:05:11.483Z [DEBUG] Getting matching hook commands for SessionStart with query: resume
+2026-04-07T13:05:11.483Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:05:11.483Z [DEBUG] Matched 0 unique hooks for query "resume" (0 before deduplication)
+2026-04-07T13:05:11.484Z [DEBUG] Total plugin output styles loaded: 0
+2026-04-07T13:05:11.489Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-04-07T13:05:11.490Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-04-07T13:05:11.490Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-04-07T13:05:11.490Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-04-07T13:05:11.490Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-04-07T13:05:11.490Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:05:11.490Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T13:05:11.494Z [DEBUG] Slash commands included in SlashCommand tool:
+2026-04-07T13:05:11.494Z [DEBUG] Skills and commands included in Skill tool: browser-use, form-testing-guide, frontend-code-analyzer, frontend-test-execution, get-ugate-token, icafe-card-manager, icode-commit-workflow, icode-git, mcp-automation-guide, nexa-knowledge-reader, notebooklm, skill-creator, skill-recommender
+2026-04-07T13:05:11.755Z [DEBUG] Stream started - received first chunk
+2026-04-07T13:05:12.553Z [DEBUG] Stream started - received first chunk
+2026-04-07T13:05:13.043Z [DEBUG] Stream started - received first chunk
+2026-04-07T13:05:14.086Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-04-07T13:05:14.086Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:05:14.086Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T13:05:14.087Z [DEBUG] Getting matching hook commands for SessionEnd with query: other
+2026-04-07T13:05:14.087Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:05:14.087Z [DEBUG] Matched 0 unique hooks for query "other" (0 before deduplication)
+2026-04-07T13:06:54.836Z [DEBUG] Watching for changes in setting files /var/folders/kj/xxsrf2495c7f41by45kc3gsc0000gn/T/claude-settings-4ce50b7f-23d2-471d-9dab-b9ee6a9f8f36.json...
+2026-04-07T13:06:54.854Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (16.7ms): security find-generic-password -a $USER -w -s "Claude Code"
+2026-04-07T13:06:54.866Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (11.2ms): security find-generic-password -a "limuyu" -w -s "Claude Code-credentials"
+2026-04-07T13:06:54.868Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-04-07T13:06:54.868Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-04-07T13:06:54.868Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-04-07T13:06:54.869Z [DEBUG] LSP server manager initialized successfully
+2026-04-07T13:06:54.869Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-04-07T13:06:54.870Z [DEBUG] Applying permission update: Adding 7 allow rule(s) to destination 'flagSettings': ["Read(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Edit(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Write(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Read(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Edit(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Write(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Read(/Users/limuyu/work/muyu-claw-team/system/**)"]
+2026-04-07T13:06:54.872Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-04-07T13:06:54.873Z [DEBUG] Stats cache does not exist, returning empty cache
+2026-04-07T13:06:54.873Z [DEBUG] Stats cache empty, processing all historical data in background
+2026-04-07T13:06:54.874Z [DEBUG] Plugin autoupdate: skipped (auto-updater disabled)
+2026-04-07T13:06:54.878Z [DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/skills, project=[/Users/limuyu/.claude/skills]
+2026-04-07T13:06:54.951Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (65.4ms): ps aux | grep -E "Visual Studio Code|Code Helper|Cursor Helper|Windsurf Helper|IntelliJ IDEA|PyCharm
+2026-04-07T13:06:54.952Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-04-07T13:06:54.967Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2026-04-07T13:06:54.967Z [DEBUG] Looking for shell config file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc
+2026-04-07T13:06:54.967Z [DEBUG] Shell config file not found: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc, creating snapshot with Claude Code defaults only
+2026-04-07T13:06:54.967Z [DEBUG] Snapshots directory: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots
+2026-04-07T13:06:54.968Z [DEBUG] Creating snapshot at: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots/snapshot-zsh-1775567214967-znm5yw.sh
+2026-04-07T13:06:54.968Z [DEBUG] Shell binary exists: true
+2026-04-07T13:06:54.968Z [DEBUG] Execution timeout: 10000ms
+2026-04-07T13:06:54.969Z [DEBUG] Writing to temp file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/a19c104c-fafa-4e64-9a6f-bd5413b39f05-agent-a19c104c-fafa-4e64-9a6f-bd5413b39f05.json.tmp.16398.1775567214969
+2026-04-07T13:06:54.972Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-04-07T13:06:54.972Z [DEBUG] Renaming /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/a19c104c-fafa-4e64-9a6f-bd5413b39f05-agent-a19c104c-fafa-4e64-9a6f-bd5413b39f05.json.tmp.16398.1775567214969 to /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/a19c104c-fafa-4e64-9a6f-bd5413b39f05-agent-a19c104c-fafa-4e64-9a6f-bd5413b39f05.json
+2026-04-07T13:06:54.972Z [DEBUG] File /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/a19c104c-fafa-4e64-9a6f-bd5413b39f05-agent-a19c104c-fafa-4e64-9a6f-bd5413b39f05.json written atomically
+2026-04-07T13:06:54.973Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-04-07T13:06:54.973Z [DEBUG] Total plugin skills loaded: 0
+2026-04-07T13:06:54.973Z [DEBUG] Total plugin commands loaded: 0
+2026-04-07T13:06:54.973Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-04-07T13:06:54.975Z [DEBUG] Loaded 15 unique skills (managed: 0, user: 2, project: 13, duplicates removed: 0)
+2026-04-07T13:06:54.975Z [DEBUG] getSkills returning: 15 skill dir commands, 0 plugin skills
+2026-04-07T13:06:54.978Z [DEBUG] Shell snapshot created successfully (1552 bytes)
+2026-04-07T13:06:54.979Z [DEBUG] Git remote URL: null
+2026-04-07T13:06:54.979Z [DEBUG] No git remote URL found
+2026-04-07T13:06:54.979Z [DEBUG] Not in a GitHub repository, skipping path mapping update
+2026-04-07T13:06:54.981Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/opt/homebrew/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+2026-04-07T13:06:54.987Z [DEBUG] Total plugin agents loaded: 0
+2026-04-07T13:06:54.991Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-04-07T13:06:55.001Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2026-04-07T13:06:55.001Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:06:55.001Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-04-07T13:06:55.003Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2026-04-07T13:06:55.003Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:06:55.003Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2026-04-07T13:06:55.005Z [DEBUG] Getting matching hook commands for SessionStart with query: resume
+2026-04-07T13:06:55.005Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:06:55.005Z [DEBUG] Matched 0 unique hooks for query "resume" (0 before deduplication)
+2026-04-07T13:06:55.006Z [DEBUG] Total plugin output styles loaded: 0
+2026-04-07T13:06:55.011Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-04-07T13:06:55.011Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-04-07T13:06:55.011Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-04-07T13:06:55.011Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-04-07T13:06:55.011Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-04-07T13:06:55.011Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:06:55.011Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T13:06:55.015Z [DEBUG] Slash commands included in SlashCommand tool:
+2026-04-07T13:06:55.015Z [DEBUG] Skills and commands included in Skill tool: browser-use, form-testing-guide, frontend-code-analyzer, frontend-test-execution, get-ugate-token, icafe-card-manager, icode-commit-workflow, icode-git, mcp-automation-guide, nexa-knowledge-reader, notebooklm, skill-creator, skill-recommender
+2026-04-07T13:06:55.439Z [DEBUG] Stream started - received first chunk
+2026-04-07T13:06:58.432Z [DEBUG] Stream started - received first chunk
+2026-04-07T13:06:59.906Z [DEBUG] Stream started - received first chunk
+2026-04-07T13:07:01.509Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-04-07T13:07:01.509Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:07:01.509Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T13:07:01.510Z [DEBUG] Getting matching hook commands for SessionEnd with query: other
+2026-04-07T13:07:01.510Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:07:01.510Z [DEBUG] Matched 0 unique hooks for query "other" (0 before deduplication)
+2026-04-07T13:13:55.855Z [DEBUG] Watching for changes in setting files /var/folders/kj/xxsrf2495c7f41by45kc3gsc0000gn/T/claude-settings-8794b13b-e90c-4051-9f2a-dd4a4bd86588.json...
+2026-04-07T13:13:55.875Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (19.8ms): security find-generic-password -a $USER -w -s "Claude Code"
+2026-04-07T13:13:55.886Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (9.9ms): security find-generic-password -a "limuyu" -w -s "Claude Code-credentials"
+2026-04-07T13:13:55.888Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-04-07T13:13:55.888Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-04-07T13:13:55.888Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-04-07T13:13:55.888Z [DEBUG] LSP server manager initialized successfully
+2026-04-07T13:13:55.888Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-04-07T13:13:55.890Z [DEBUG] Applying permission update: Adding 7 allow rule(s) to destination 'flagSettings': ["Read(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Edit(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Write(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Read(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Edit(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Write(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Read(/Users/limuyu/work/muyu-claw-team/system/**)"]
+2026-04-07T13:13:55.891Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-04-07T13:13:55.892Z [DEBUG] Stats cache does not exist, returning empty cache
+2026-04-07T13:13:55.892Z [DEBUG] Stats cache empty, processing all historical data in background
+2026-04-07T13:13:55.893Z [DEBUG] Plugin autoupdate: skipped (auto-updater disabled)
+2026-04-07T13:13:55.897Z [DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/skills, project=[/Users/limuyu/.claude/skills]
+2026-04-07T13:13:55.970Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (65.5ms): ps aux | grep -E "Visual Studio Code|Code Helper|Cursor Helper|Windsurf Helper|IntelliJ IDEA|PyCharm
+2026-04-07T13:13:55.971Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-04-07T13:13:55.984Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2026-04-07T13:13:55.984Z [DEBUG] Looking for shell config file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc
+2026-04-07T13:13:55.984Z [DEBUG] Shell config file not found: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc, creating snapshot with Claude Code defaults only
+2026-04-07T13:13:55.984Z [DEBUG] Snapshots directory: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots
+2026-04-07T13:13:55.985Z [DEBUG] Creating snapshot at: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots/snapshot-zsh-1775567635984-tye2de.sh
+2026-04-07T13:13:55.985Z [DEBUG] Shell binary exists: true
+2026-04-07T13:13:55.985Z [DEBUG] Execution timeout: 10000ms
+2026-04-07T13:13:55.985Z [DEBUG] Writing to temp file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/a2d62b97-2e0f-4509-8a01-389b0a617a81-agent-a2d62b97-2e0f-4509-8a01-389b0a617a81.json.tmp.21840.1775567635985
+2026-04-07T13:13:55.993Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (7.5ms)
+2026-04-07T13:13:55.993Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-04-07T13:13:55.993Z [DEBUG] Renaming /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/a2d62b97-2e0f-4509-8a01-389b0a617a81-agent-a2d62b97-2e0f-4509-8a01-389b0a617a81.json.tmp.21840.1775567635985 to /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/a2d62b97-2e0f-4509-8a01-389b0a617a81-agent-a2d62b97-2e0f-4509-8a01-389b0a617a81.json
+2026-04-07T13:13:55.993Z [DEBUG] File /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/a2d62b97-2e0f-4509-8a01-389b0a617a81-agent-a2d62b97-2e0f-4509-8a01-389b0a617a81.json written atomically
+2026-04-07T13:13:55.994Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-04-07T13:13:55.994Z [DEBUG] Total plugin skills loaded: 0
+2026-04-07T13:13:55.994Z [DEBUG] Total plugin commands loaded: 0
+2026-04-07T13:13:55.994Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-04-07T13:13:55.996Z [DEBUG] Loaded 15 unique skills (managed: 0, user: 2, project: 13, duplicates removed: 0)
+2026-04-07T13:13:55.996Z [DEBUG] getSkills returning: 15 skill dir commands, 0 plugin skills
+2026-04-07T13:13:55.999Z [DEBUG] Shell snapshot created successfully (1552 bytes)
+2026-04-07T13:13:55.999Z [DEBUG] Git remote URL: null
+2026-04-07T13:13:55.999Z [DEBUG] No git remote URL found
+2026-04-07T13:13:55.999Z [DEBUG] Not in a GitHub repository, skipping path mapping update
+2026-04-07T13:13:56.002Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/opt/homebrew/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+2026-04-07T13:13:56.008Z [DEBUG] Total plugin agents loaded: 0
+2026-04-07T13:13:56.012Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-04-07T13:13:56.021Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2026-04-07T13:13:56.021Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:13:56.021Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-04-07T13:13:56.023Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2026-04-07T13:13:56.023Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:13:56.023Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2026-04-07T13:13:56.025Z [DEBUG] Getting matching hook commands for SessionStart with query: resume
+2026-04-07T13:13:56.025Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:13:56.025Z [DEBUG] Matched 0 unique hooks for query "resume" (0 before deduplication)
+2026-04-07T13:13:56.026Z [DEBUG] Total plugin output styles loaded: 0
+2026-04-07T13:13:56.030Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-04-07T13:13:56.030Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-04-07T13:13:56.030Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-04-07T13:13:56.030Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-04-07T13:13:56.031Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-04-07T13:13:56.031Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:13:56.031Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T13:13:56.034Z [DEBUG] Slash commands included in SlashCommand tool:
+2026-04-07T13:13:56.034Z [DEBUG] Skills and commands included in Skill tool: browser-use, form-testing-guide, frontend-code-analyzer, frontend-test-execution, get-ugate-token, icafe-card-manager, icode-commit-workflow, icode-git, mcp-automation-guide, nexa-knowledge-reader, notebooklm, skill-creator, skill-recommender
+2026-04-07T13:13:56.350Z [DEBUG] Stream started - received first chunk
+2026-04-07T13:13:58.263Z [DEBUG] Stream started - received first chunk
+2026-04-07T13:13:58.702Z [DEBUG] Stream started - received first chunk
+2026-04-07T13:13:59.363Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-04-07T13:13:59.363Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:13:59.363Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T13:14:00.562Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-04-07T13:14:00.562Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:14:00.562Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T13:14:01.638Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-04-07T13:14:01.638Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:14:01.638Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T13:14:01.640Z [DEBUG] Getting matching hook commands for SessionEnd with query: other
+2026-04-07T13:14:01.640Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:14:01.640Z [DEBUG] Matched 0 unique hooks for query "other" (0 before deduplication)
+2026-04-07T13:19:12.943Z [DEBUG] Watching for changes in setting files /var/folders/kj/xxsrf2495c7f41by45kc3gsc0000gn/T/claude-settings-cfcef0cd-d861-4337-af0a-fd6f8c4efa01.json...
+2026-04-07T13:19:12.962Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (17.9ms): security find-generic-password -a $USER -w -s "Claude Code"
+2026-04-07T13:19:12.974Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (11.6ms): security find-generic-password -a "limuyu" -w -s "Claude Code-credentials"
+2026-04-07T13:19:12.976Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-04-07T13:19:12.977Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-04-07T13:19:12.977Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-04-07T13:19:12.977Z [DEBUG] LSP server manager initialized successfully
+2026-04-07T13:19:12.977Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-04-07T13:19:12.979Z [DEBUG] Applying permission update: Adding 7 allow rule(s) to destination 'flagSettings': ["Read(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Edit(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Write(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Read(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Edit(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Write(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Read(/Users/limuyu/work/muyu-claw-team/system/**)"]
+2026-04-07T13:19:12.980Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-04-07T13:19:12.982Z [DEBUG] Stats cache does not exist, returning empty cache
+2026-04-07T13:19:12.982Z [DEBUG] Stats cache empty, processing all historical data in background
+2026-04-07T13:19:12.982Z [DEBUG] Plugin autoupdate: skipped (auto-updater disabled)
+2026-04-07T13:19:12.986Z [DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/skills, project=[/Users/limuyu/.claude/skills]
+2026-04-07T13:19:13.069Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (74.0ms): ps aux | grep -E "Visual Studio Code|Code Helper|Cursor Helper|Windsurf Helper|IntelliJ IDEA|PyCharm
+2026-04-07T13:19:13.069Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-04-07T13:19:13.083Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2026-04-07T13:19:13.084Z [DEBUG] Looking for shell config file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc
+2026-04-07T13:19:13.084Z [DEBUG] Shell config file not found: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc, creating snapshot with Claude Code defaults only
+2026-04-07T13:19:13.084Z [DEBUG] Snapshots directory: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots
+2026-04-07T13:19:13.084Z [DEBUG] Creating snapshot at: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots/snapshot-zsh-1775567953084-noonzu.sh
+2026-04-07T13:19:13.084Z [DEBUG] Shell binary exists: true
+2026-04-07T13:19:13.084Z [DEBUG] Execution timeout: 10000ms
+2026-04-07T13:19:13.085Z [DEBUG] Writing to temp file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/5bd01cb9-48cb-4191-a846-589bf9c4a1b1-agent-5bd01cb9-48cb-4191-a846-589bf9c4a1b1.json.tmp.25776.1775567953085
+2026-04-07T13:19:13.090Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-04-07T13:19:13.090Z [DEBUG] Renaming /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/5bd01cb9-48cb-4191-a846-589bf9c4a1b1-agent-5bd01cb9-48cb-4191-a846-589bf9c4a1b1.json.tmp.25776.1775567953085 to /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/5bd01cb9-48cb-4191-a846-589bf9c4a1b1-agent-5bd01cb9-48cb-4191-a846-589bf9c4a1b1.json
+2026-04-07T13:19:13.090Z [DEBUG] File /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/5bd01cb9-48cb-4191-a846-589bf9c4a1b1-agent-5bd01cb9-48cb-4191-a846-589bf9c4a1b1.json written atomically
+2026-04-07T13:19:13.090Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-04-07T13:19:13.090Z [DEBUG] Total plugin skills loaded: 0
+2026-04-07T13:19:13.090Z [DEBUG] Total plugin commands loaded: 0
+2026-04-07T13:19:13.090Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-04-07T13:19:13.093Z [DEBUG] Loaded 15 unique skills (managed: 0, user: 2, project: 13, duplicates removed: 0)
+2026-04-07T13:19:13.093Z [DEBUG] getSkills returning: 15 skill dir commands, 0 plugin skills
+2026-04-07T13:19:13.097Z [DEBUG] Shell snapshot created successfully (1552 bytes)
+2026-04-07T13:19:13.097Z [DEBUG] Git remote URL: null
+2026-04-07T13:19:13.097Z [DEBUG] No git remote URL found
+2026-04-07T13:19:13.097Z [DEBUG] Not in a GitHub repository, skipping path mapping update
+2026-04-07T13:19:13.099Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/opt/homebrew/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+2026-04-07T13:19:13.105Z [DEBUG] Total plugin agents loaded: 0
+2026-04-07T13:19:13.111Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-04-07T13:19:13.121Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2026-04-07T13:19:13.121Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:19:13.121Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-04-07T13:19:13.122Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2026-04-07T13:19:13.122Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:19:13.122Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2026-04-07T13:19:13.126Z [DEBUG] Getting matching hook commands for SessionStart with query: resume
+2026-04-07T13:19:13.126Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:19:13.126Z [DEBUG] Matched 0 unique hooks for query "resume" (0 before deduplication)
+2026-04-07T13:19:13.127Z [DEBUG] Total plugin output styles loaded: 0
+2026-04-07T13:19:13.132Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-04-07T13:19:13.132Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-04-07T13:19:13.132Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-04-07T13:19:13.132Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-04-07T13:19:13.133Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-04-07T13:19:13.133Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:19:13.133Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T13:19:13.137Z [DEBUG] Slash commands included in SlashCommand tool:
+2026-04-07T13:19:13.137Z [DEBUG] Skills and commands included in Skill tool: browser-use, form-testing-guide, frontend-code-analyzer, frontend-test-execution, get-ugate-token, icafe-card-manager, icode-commit-workflow, icode-git, mcp-automation-guide, nexa-knowledge-reader, notebooklm, skill-creator, skill-recommender
+2026-04-07T13:19:13.406Z [DEBUG] Stream started - received first chunk
+2026-04-07T13:19:13.950Z [DEBUG] Stream started - received first chunk
+2026-04-07T13:19:14.766Z [DEBUG] Stream started - received first chunk
+2026-04-07T13:19:15.339Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-04-07T13:19:15.339Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:19:15.339Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T13:19:15.906Z [DEBUG] executePreToolHooks called for tool: WebSearch
+2026-04-07T13:19:15.906Z [DEBUG] Getting matching hook commands for PreToolUse with query: WebSearch
+2026-04-07T13:19:15.906Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:19:15.906Z [DEBUG] Matched 0 unique hooks for query "WebSearch" (0 before deduplication)
+2026-04-07T13:19:15.917Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-04-07T13:19:15.917Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-04-07T13:19:15.917Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-04-07T13:19:15.917Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-04-07T13:19:16.102Z [DEBUG] Stream started - received first chunk
+2026-04-07T13:19:24.765Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-04-07T13:19:24.765Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:19:24.765Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T13:19:24.766Z [DEBUG] Getting matching hook commands for SessionEnd with query: other
+2026-04-07T13:19:24.766Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:19:24.766Z [DEBUG] Matched 0 unique hooks for query "other" (0 before deduplication)
+2026-04-07T13:22:21.804Z [DEBUG] Watching for changes in setting files /var/folders/kj/xxsrf2495c7f41by45kc3gsc0000gn/T/claude-settings-101524f4-4a99-4c60-a3e5-b18e27063dc8.json...
+2026-04-07T13:22:21.821Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (16.4ms): security find-generic-password -a $USER -w -s "Claude Code"
+2026-04-07T13:22:21.890Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (68.6ms): security find-generic-password -a "limuyu" -w -s "Claude Code-credentials"
+2026-04-07T13:22:21.903Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-04-07T13:22:21.903Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-04-07T13:22:21.903Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-04-07T13:22:21.905Z [DEBUG] LSP server manager initialized successfully
+2026-04-07T13:22:21.906Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-04-07T13:22:21.908Z [DEBUG] Applying permission update: Adding 7 allow rule(s) to destination 'flagSettings': ["Read(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Edit(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Write(/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/**)","Read(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Edit(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Write(/Users/limuyu/work/muyu-claw-team/users/1490771734616473661/**)","Read(/Users/limuyu/work/muyu-claw-team/system/**)"]
+2026-04-07T13:22:21.910Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-04-07T13:22:21.911Z [DEBUG] Stats cache does not exist, returning empty cache
+2026-04-07T13:22:21.911Z [DEBUG] Stats cache empty, processing all historical data in background
+2026-04-07T13:22:21.912Z [DEBUG] Plugin autoupdate: skipped (auto-updater disabled)
+2026-04-07T13:22:21.917Z [DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/skills, project=[/Users/limuyu/.claude/skills]
+2026-04-07T13:22:22.018Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (92.2ms): ps aux | grep -E "Visual Studio Code|Code Helper|Cursor Helper|Windsurf Helper|IntelliJ IDEA|PyCharm
+2026-04-07T13:22:22.019Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-04-07T13:22:22.037Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2026-04-07T13:22:22.037Z [DEBUG] Looking for shell config file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc
+2026-04-07T13:22:22.037Z [DEBUG] Shell config file not found: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.zshrc, creating snapshot with Claude Code defaults only
+2026-04-07T13:22:22.037Z [DEBUG] Snapshots directory: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots
+2026-04-07T13:22:22.037Z [DEBUG] Creating snapshot at: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/shell-snapshots/snapshot-zsh-1775568142037-xdghig.sh
+2026-04-07T13:22:22.037Z [DEBUG] Shell binary exists: true
+2026-04-07T13:22:22.037Z [DEBUG] Execution timeout: 10000ms
+2026-04-07T13:22:22.039Z [DEBUG] Writing to temp file: /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/8e386f15-2f1d-4e8e-8a98-aca9fd130bca-agent-8e386f15-2f1d-4e8e-8a98-aca9fd130bca.json.tmp.28435.1775568142039
+2026-04-07T13:22:22.043Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-04-07T13:22:22.043Z [DEBUG] Renaming /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/8e386f15-2f1d-4e8e-8a98-aca9fd130bca-agent-8e386f15-2f1d-4e8e-8a98-aca9fd130bca.json.tmp.28435.1775568142039 to /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/8e386f15-2f1d-4e8e-8a98-aca9fd130bca-agent-8e386f15-2f1d-4e8e-8a98-aca9fd130bca.json
+2026-04-07T13:22:22.044Z [DEBUG] File /Users/limuyu/work/muyu-claw-team/sessions/group/1490772998842486857/1490771734616473661/discord-dev/home/.claude/todos/8e386f15-2f1d-4e8e-8a98-aca9fd130bca-agent-8e386f15-2f1d-4e8e-8a98-aca9fd130bca.json written atomically
+2026-04-07T13:22:22.044Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-04-07T13:22:22.044Z [DEBUG] Total plugin skills loaded: 0
+2026-04-07T13:22:22.044Z [DEBUG] Total plugin commands loaded: 0
+2026-04-07T13:22:22.044Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-04-07T13:22:22.048Z [DEBUG] Loaded 15 unique skills (managed: 0, user: 2, project: 13, duplicates removed: 0)
+2026-04-07T13:22:22.048Z [DEBUG] getSkills returning: 15 skill dir commands, 0 plugin skills
+2026-04-07T13:22:22.053Z [DEBUG] Shell snapshot created successfully (1552 bytes)
+2026-04-07T13:22:22.053Z [DEBUG] Git remote URL: null
+2026-04-07T13:22:22.053Z [DEBUG] No git remote URL found
+2026-04-07T13:22:22.053Z [DEBUG] Not in a GitHub repository, skipping path mapping update
+2026-04-07T13:22:22.057Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/opt/homebrew/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+2026-04-07T13:22:22.060Z [DEBUG] Total plugin agents loaded: 0
+2026-04-07T13:22:22.067Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-04-07T13:22:22.077Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2026-04-07T13:22:22.077Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:22:22.077Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-04-07T13:22:22.079Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2026-04-07T13:22:22.079Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:22:22.079Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2026-04-07T13:22:22.081Z [DEBUG] Getting matching hook commands for SessionStart with query: resume
+2026-04-07T13:22:22.081Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:22:22.081Z [DEBUG] Matched 0 unique hooks for query "resume" (0 before deduplication)
+2026-04-07T13:22:22.083Z [DEBUG] Total plugin output styles loaded: 0
+2026-04-07T13:22:22.087Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-04-07T13:22:22.087Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-04-07T13:22:22.087Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-04-07T13:22:22.087Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-04-07T13:22:22.088Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-04-07T13:22:22.088Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:22:22.088Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T13:22:22.091Z [DEBUG] Slash commands included in SlashCommand tool:
+2026-04-07T13:22:22.091Z [DEBUG] Skills and commands included in Skill tool: browser-use, form-testing-guide, frontend-code-analyzer, frontend-test-execution, get-ugate-token, icafe-card-manager, icode-commit-workflow, icode-git, mcp-automation-guide, nexa-knowledge-reader, notebooklm, skill-creator, skill-recommender
+2026-04-07T13:22:22.412Z [DEBUG] Stream started - received first chunk
+2026-04-07T13:22:22.993Z [DEBUG] Stream started - received first chunk
+2026-04-07T13:22:23.938Z [DEBUG] Stream started - received first chunk
+2026-04-07T13:22:25.662Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-04-07T13:22:25.662Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:22:25.662Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T13:22:27.223Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-04-07T13:22:27.223Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:22:27.223Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-04-07T13:22:27.224Z [DEBUG] Getting matching hook commands for SessionEnd with query: other
+2026-04-07T13:22:27.224Z [DEBUG] Found 0 hook matchers in settings
+2026-04-07T13:22:27.224Z [DEBUG] Matched 0 unique hooks for query "other" (0 before deduplication)

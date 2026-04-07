@@ -1,0 +1,20 @@
+[
+  {
+    "id": "discord-dev",
+    "platform": "discord",
+    "agentId": "dev",
+    "tokenEnv": "DISCORD_BOT_TOKEN_DEV"
+  },
+  {
+    "id": "discord-ops",
+    "platform": "discord",
+    "agentId": "ops",
+    "tokenEnv": "DISCORD_BOT_TOKEN_OPS"
+  },
+  {
+    "id": "discord-design",
+    "platform": "discord",
+    "agentId": "design",
+    "tokenEnv": "DISCORD_BOT_TOKEN_DESIGN"
+  }
+]

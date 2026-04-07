@@ -1,0 +1,22 @@
+{
+  "id": "design",
+  "name": "Design Agent",
+  "runtime": "claude",
+  "skill_mode": "allowlist",
+  "allowed_tools": [
+    "Bash(*)",
+    "Edit",
+    "Write",
+    "Read",
+    "MultiEdit",
+    "Glob",
+    "Grep",
+    "LS",
+    "NotebookRead",
+    "NotebookEdit",
+    "Task",
+    "TodoWrite",
+    "WebFetch(*)",
+    "WebSearch"
+  ]
+}
