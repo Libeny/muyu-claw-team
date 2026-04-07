@@ -2,6 +2,10 @@ node_modules/
 .env
 .env.local
 config/bots.local.json
+sessions/*
+!sessions/.gitkeep
+users/*
+!users/.gitkeep
 var/data/
 var/logs/
 .DS_Store
