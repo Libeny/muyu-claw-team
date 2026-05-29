@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图书智能伴读器</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="library-pane">
+        <div class="pane-head">
+          <h1>书库</h1>
+          <div class="head-actions">
+            <button id="importFileButton" title="导入本地文本">导入</button>
+            <button id="sampleButton" title="导入示例书">示例</button>
+          </div>
+        </div>
+        <div id="bookList" class="book-list"></div>
+      </aside>
+
+      <section class="reader-pane">
+        <header class="reader-toolbar">
+          <div>
+            <div id="bookTitle" class="book-title">未选择书籍</div>
+            <div id="bookMeta" class="book-meta"></div>
+          </div>
+          <div class="reader-controls">
+            <select id="chapterSelect"></select>
+            <button id="prevPageButton" title="上一页">‹</button>
+            <span id="pageIndicator">0 / 0</span>
+            <button id="nextPageButton" title="下一页">›</button>
+          </div>
+        </header>
+
+        <article class="book-page">
+          <div id="chapterTitle" class="chapter-title"></div>
+          <div id="pageText" class="page-text"></div>
+        </article>
+      </section>
+
+      <aside class="agent-pane">
+        <div class="agent-tabs">
+          <button class="tab-button active" data-tab="ask">提问</button>
+          <button class="tab-button" data-tab="sessions">会话</button>
+          <button class="tab-button" data-tab="notebook">笔记</button>
+        </div>
+
+        <section id="askTab" class="tab-panel active">
+          <div class="selection-box">
+            <div class="label">当前选中</div>
+            <div id="selectedText" class="selected-text">未选择文本</div>
+          </div>
+          <textarea id="questionInput" rows="4" placeholder="向图书智能体提问"></textarea>
+          <div class="agent-actions">
+            <button id="askButton">提问</button>
+            <button id="translateButton">翻译选中</button>
+            <button id="summaryButton">总结章节</button>
+          </div>
+          <div id="answerBox" class="answer-box"></div>
+        </section>
+
+        <section id="sessionsTab" class="tab-panel">
+          <div id="sessionList" class="stack-list"></div>
+        </section>
+
+        <section id="notebookTab" class="tab-panel">
+          <div class="notebook-actions">
+            <button id="saveHighlightButton">高亮选中</button>
+            <button id="saveVocabButton">保存选中为生词</button>
+            <button id="exportNoteButton">导出笔记</button>
+            <button id="exportSkillButton">导出技能</button>
+          </div>
+          <div class="notebook-section-title">章节概要</div>
+          <div id="summaryList" class="stack-list"></div>
+          <div class="notebook-section-title">高亮标注</div>
+          <div id="highlightList" class="stack-list"></div>
+          <div class="notebook-section-title">生词本</div>
+          <div id="vocabList" class="stack-list"></div>
+        </section>
+      </aside>
+    </main>
+
+    <div id="statusBar" class="status-bar">就绪</div>
+    <script src="./app.js"></script>
+  </body>
+</html>
