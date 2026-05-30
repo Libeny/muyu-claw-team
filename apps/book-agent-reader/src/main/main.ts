@@ -20,7 +20,7 @@ async function createWindow(): Promise<void> {
   mainWindow = new BrowserWindow({
     width: 1440,
     height: 960,
-    minWidth: 1100,
+    minWidth: 1200,
     minHeight: 760,
     title: '图书智能伴读器',
     backgroundColor: '#0d0d0c',

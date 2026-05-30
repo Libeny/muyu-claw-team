@@ -34,12 +34,20 @@ export interface ImageAsset {
   contextText: string;
 }
 
+export interface BookCoverImage {
+  sourcePath: string;
+  mediaType?: string;
+  dataUrl?: string;
+  altText?: string;
+}
+
 export interface BookManifest {
   id: string;
   title: string;
   author: string;
   language: string;
   sourceType: SourceType;
+  coverImage?: BookCoverImage;
   createdAt: string;
   updatedAt: string;
   chapterIds: string[];

@@ -31,6 +31,37 @@ test('文本导入会按一级标题拆成章节并生成页面', async () => {
   assert.equal(loaded.chapters.length, 2);
 });
 
+test('书库列表会从旧书籍章节图片补出封面', async () => {
+  const imported = importTextBook({
+    title: '旧数据书籍',
+    author: '作者',
+    language: 'zh',
+    content: '# 封面页\n正文内容',
+    sourceType: 'markdown',
+  });
+  imported.chapters[0]!.images = [
+    {
+      id: 'image-cover',
+      bookId: imported.manifest.id,
+      chapterId: imported.chapters[0]!.id,
+      sourcePath: 'cover.jpg',
+      mediaType: 'image/jpeg',
+      dataUrl: 'data:image/jpeg;base64,/9j/2Q==',
+      altText: '封面图',
+      caption: '',
+      contextText: '',
+    },
+  ];
+
+  const homeDir = await mkdtemp(path.join(os.tmpdir(), 'book-agent-reader-'));
+  const store = new BookStore(homeDir);
+  await store.saveImportedBook(imported);
+
+  const books = await store.listBooks();
+  assert.equal(books[0]?.coverImage?.altText, '封面图');
+  assert.match(books[0]?.coverImage?.dataUrl ?? '', /^data:image\/jpeg;base64,/);
+});
+
 test('EPUB 导入会按 NCX 目录锚点拆分单文件长正文，并保留图片文件', async () => {
   const zip = new JSZip();
   zip.file('mimetype', 'application/epub+zip');

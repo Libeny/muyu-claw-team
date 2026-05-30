@@ -1,6 +1,6 @@
 import { mkdir, readdir } from 'node:fs/promises';
 import path from 'node:path';
-import type { BookManifest, Chapter, ImportedBook, LoadedBook } from '../domain/book.js';
+import type { BookCoverImage, BookManifest, Chapter, ImageAsset, ImportedBook, LoadedBook } from '../domain/book.js';
 import { readJsonFile, writeJsonFile } from './file-json-store.js';
 
 export class BookStore {
@@ -25,7 +25,7 @@ export class BookStore {
         path.join(this.booksDir(), entry.name, 'book.json'),
         null,
       );
-      if (manifest) books.push(manifest);
+      if (manifest) books.push(await this.withCoverImage(manifest));
     }
     return books.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
   }
@@ -53,4 +53,33 @@ export class BookStore {
   private booksDir(): string {
     return path.join(this.homeDir, 'books');
   }
+
+  private async withCoverImage(manifest: BookManifest): Promise<BookManifest> {
+    if (manifest.coverImage?.dataUrl) return manifest;
+    for (const chapterId of manifest.chapterIds) {
+      const chapter = await readJsonFile<Chapter | null>(
+        path.join(this.bookDir(manifest.id), 'chapters', `${chapterId}.json`),
+        null,
+      );
+      const image = chapter?.images?.find((item) => item.dataUrl);
+      if (image) return { ...manifest, coverImage: imageToCoverImage(image) };
+    }
+    return manifest;
+  }
+}
+
+function imageToCoverImage(image: ImageAsset): BookCoverImage {
+  return {
+    sourcePath: image.sourcePath,
+    mediaType: image.mediaType,
+    dataUrl: image.dataUrl,
+    altText: meaningfulImageText(image.altText) || meaningfulImageText(image.caption) || '封面',
+  };
+}
+
+function meaningfulImageText(value?: string): string {
+  const normalized = String(value || '').replace(/\s+/g, ' ').trim();
+  if (!normalized) return '';
+  if (['image', 'img', 'picture', 'photo', 'graphic', 'figure'].includes(normalized.toLowerCase())) return '';
+  return normalized;
 }

@@ -1,7 +1,7 @@
 import JSZip from 'jszip';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import type { Chapter, ImageAsset, ImportedBook, Page, SourceType } from '../domain/book.js';
+import type { BookCoverImage, Chapter, ImageAsset, ImportedBook, Page, SourceType } from '../domain/book.js';
 import { nowIso, stableId } from './ids.js';
 
 const PAGE_SIZE = 1800;
@@ -74,6 +74,7 @@ interface EpubArchive {
 interface EpubManifestItem {
   href: string;
   mediaType: string;
+  properties?: string;
 }
 
 async function importEpubArchive(archive: EpubArchive): Promise<ImportedBook> {
@@ -102,11 +103,14 @@ async function importEpubArchive(archive: EpubArchive): Promise<ImportedBook> {
   }
 
   const readableChapters = chapters.filter(isReadableChapter);
+  const coverImage =
+    (await extractEpubCoverImage(archive, opf, manifest, mediaTypesByPath, baseDir)) || coverImageFromChapters(chapters);
   return buildImportedBook({
     title: metadata.title || '未命名 EPUB',
     author: metadata.author,
     language: metadata.language || 'unknown',
     sourceType: 'epub',
+    coverImage,
     chapters: readableChapters.length ? readableChapters : [{ title: '正文', text: '' }],
   });
 }
@@ -133,6 +137,7 @@ function buildImportedBook(input: {
   author?: string;
   language?: string;
   sourceType: SourceType;
+  coverImage?: BookCoverImage;
   chapters: ChapterInput[];
 }): ImportedBook {
   const createdAt = nowIso();
@@ -172,6 +177,7 @@ function buildImportedBook(input: {
       author: input.author?.trim() || '',
       language: input.language?.trim() || 'unknown',
       sourceType: input.sourceType,
+      coverImage: input.coverImage,
       createdAt,
       updatedAt: createdAt,
       chapterIds: chapters.map((chapter) => chapter.id),
@@ -260,10 +266,104 @@ function parseManifest(opf: string): Map<string, EpubManifestItem> {
       manifest.set(attrs.id, {
         href: attrs.href,
         mediaType: attrs['media-type'] || guessMediaType(attrs.href),
+        properties: attrs.properties,
       });
     }
   }
   return manifest;
+}
+
+async function extractEpubCoverImage(
+  archive: EpubArchive,
+  opf: string,
+  manifest: Map<string, EpubManifestItem>,
+  mediaTypesByPath: Map<string, string>,
+  baseDir: string,
+): Promise<BookCoverImage | undefined> {
+  const coverId = parseCoverMetaId(opf);
+  const directCover =
+    (coverId && manifest.get(coverId)) ||
+    [...manifest.values()].find((item) => item.properties?.split(/\s+/).includes('cover-image')) ||
+    [...manifest.entries()].find(
+      ([id, item]) => isImageMediaType(item.mediaType) && /cover/i.test(`${id} ${item.href}`),
+    )?.[1];
+  const guideCoverHref = parseGuideCoverHref(opf);
+  const coverPath = directCover?.href
+    ? normalizeZipPath(`${baseDir}${directCover.href}`)
+    : guideCoverHref
+      ? normalizeZipPath(`${baseDir}${guideCoverHref}`)
+      : '';
+  if (!coverPath) return undefined;
+
+  if (isImagePath(coverPath) || isImageMediaType(mediaTypesByPath.get(coverPath) || directCover?.mediaType || '')) {
+    return readCoverBinary(archive, coverPath, mediaTypesByPath.get(coverPath) || directCover?.mediaType);
+  }
+
+  try {
+    const coverHtml = await archive.readText(coverPath);
+    const coverImage = extractImageFromHtml(coverHtml, coverPath);
+    if (!coverImage) return undefined;
+    return readCoverBinary(archive, coverImage.sourcePath, mediaTypesByPath.get(coverImage.sourcePath));
+  } catch {
+    return undefined;
+  }
+}
+
+async function readCoverBinary(
+  archive: EpubArchive,
+  sourcePath: string,
+  mediaType?: string,
+): Promise<BookCoverImage | undefined> {
+  try {
+    const resolvedMediaType = mediaType || guessMediaType(sourcePath);
+    const data = await archive.readBinary(sourcePath);
+    return {
+      sourcePath,
+      mediaType: resolvedMediaType,
+      dataUrl: `data:${resolvedMediaType};base64,${data.toString('base64')}`,
+      altText: '封面',
+    };
+  } catch {
+    return undefined;
+  }
+}
+
+function coverImageFromChapters(chapters: ChapterInput[]): BookCoverImage | undefined {
+  for (const chapter of chapters) {
+    const image = chapter.images?.find((item) => item.dataUrl);
+    if (!image) continue;
+    return {
+      sourcePath: image.sourcePath,
+      mediaType: image.mediaType,
+      dataUrl: image.dataUrl,
+      altText: meaningfulCoverAlt(image.altText) || meaningfulCoverAlt(image.caption) || '封面',
+    };
+  }
+  return undefined;
+}
+
+function parseCoverMetaId(opf: string): string {
+  for (const match of opf.matchAll(/<meta\b([^>]+)>/gi)) {
+    const attrs = parseAttrs(match[1] || '');
+    if (attrs.name?.toLowerCase() === 'cover' && attrs.content) return attrs.content;
+  }
+  return '';
+}
+
+function parseGuideCoverHref(opf: string): string {
+  for (const match of opf.matchAll(/<reference\b([^>]+)>/gi)) {
+    const attrs = parseAttrs(match[1] || '');
+    if (attrs.type?.toLowerCase() === 'cover' && attrs.href) return attrs.href;
+  }
+  return '';
+}
+
+function isImageMediaType(mediaType: string): boolean {
+  return /^image\//i.test(mediaType);
+}
+
+function isImagePath(filePath: string): boolean {
+  return /\.(?:jpe?g|png|gif|webp|svg)$/i.test(filePath);
 }
 
 function mapMediaTypesByPath(manifest: Map<string, EpubManifestItem>, baseDir: string): Map<string, string> {
@@ -481,6 +581,13 @@ function hasMeaningfulImageContext(image: Omit<ImageAsset, 'id' | 'bookId' | 'ch
 function isMeaningfulImageText(value: string): boolean {
   const normalized = decodeEntities(stripTags(value)).replace(/\s+/g, ' ').trim().toLowerCase();
   return Boolean(normalized && !['image', 'img', 'picture', 'photo', 'graphic', 'figure'].includes(normalized));
+}
+
+function meaningfulCoverAlt(value?: string): string {
+  const normalized = decodeEntities(stripTags(value || '')).replace(/\s+/g, ' ').trim();
+  if (!normalized) return '';
+  if (['image', 'img', 'picture', 'photo', 'graphic', 'figure'].includes(normalized.toLowerCase())) return '';
+  return normalized;
 }
 
 function extractImageFromHtml(html: string, fallbackPath: string): Omit<ImageAsset, 'id' | 'bookId' | 'chapterId'> | null {

@@ -7,16 +7,34 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="app-shell">
-      <aside class="library-pane">
-        <div class="pane-head">
+    <main id="libraryView" class="library-view">
+      <header class="library-hero">
+        <div>
+          <div class="library-kicker">图书智能伴读器</div>
           <h1>书库</h1>
-          <div class="head-actions">
-            <button id="importFileButton" title="导入本地文本">导入</button>
-            <button id="sampleButton" title="导入示例书">示例</button>
+          <div id="libraryStats" class="library-stats">正在读取书库</div>
+        </div>
+        <div class="head-actions">
+          <button id="importFileButton" title="导入本地文本">导入</button>
+          <button id="sampleButton" title="导入示例书">示例</button>
+        </div>
+      </header>
+
+      <section class="library-content">
+        <div id="libraryBookGrid" class="library-book-grid"></div>
+      </section>
+    </main>
+
+    <main id="readerView" class="app-shell is-hidden">
+      <aside class="chapter-pane">
+        <div class="pane-head reader-side-head">
+          <button id="backToLibraryButton" class="icon-button" title="返回书库">←</button>
+          <div class="reader-side-title">
+            <h1>目录</h1>
+            <div id="chapterCount" class="side-meta">未选择书籍</div>
           </div>
         </div>
-        <div id="bookList" class="book-list"></div>
+        <nav id="chapterList" class="chapter-list" aria-label="章节目录"></nav>
       </aside>
 
       <section class="reader-pane">
@@ -26,14 +44,13 @@
             <div id="bookMeta" class="book-meta"></div>
           </div>
           <div class="reader-controls">
-            <select id="chapterSelect"></select>
-            <button id="prevPageButton" title="上一页">‹</button>
+            <button id="prevPageButton" title="上一页">上一页</button>
             <span id="pageIndicator">0 / 0</span>
-            <button id="nextPageButton" title="下一页">›</button>
+            <button id="nextPageButton" title="下一页">下一页</button>
           </div>
         </header>
 
-        <article class="book-page">
+        <article id="bookPage" class="book-page">
           <div id="chapterTitle" class="chapter-title"></div>
           <div id="pageText" class="page-text"></div>
         </article>

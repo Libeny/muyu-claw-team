@@ -1,21 +1,30 @@
 const api = window.bookAgentReader || createHttpApi();
+const DISPLAY_PAGE_SIZE = 900;
 
 const state = {
   books: [],
   currentBook: null,
+  view: 'library',
   chapterIndex: 0,
   pageIndex: 0,
+  pageTurn: 'none',
   selectedText: '',
 };
 
 const elements = {
-  bookList: document.getElementById('bookList'),
+  libraryView: document.getElementById('libraryView'),
+  readerView: document.getElementById('readerView'),
+  libraryBookGrid: document.getElementById('libraryBookGrid'),
+  libraryStats: document.getElementById('libraryStats'),
   sampleButton: document.getElementById('sampleButton'),
   importFileButton: document.getElementById('importFileButton'),
+  backToLibraryButton: document.getElementById('backToLibraryButton'),
+  chapterList: document.getElementById('chapterList'),
+  chapterCount: document.getElementById('chapterCount'),
   bookTitle: document.getElementById('bookTitle'),
   bookMeta: document.getElementById('bookMeta'),
-  chapterSelect: document.getElementById('chapterSelect'),
   chapterTitle: document.getElementById('chapterTitle'),
+  bookPage: document.getElementById('bookPage'),
   pageText: document.getElementById('pageText'),
   pageIndicator: document.getElementById('pageIndicator'),
   prevPageButton: document.getElementById('prevPageButton'),
@@ -57,23 +66,16 @@ function bindEvents() {
     });
   });
 
-  elements.chapterSelect.addEventListener('change', () => {
-    state.chapterIndex = Number(elements.chapterSelect.value || 0);
-    state.pageIndex = 0;
-    renderReader();
-  });
-
   elements.prevPageButton.addEventListener('click', () => {
-    state.pageIndex = Math.max(0, state.pageIndex - 1);
-    renderReader();
+    goToPageIndex(state.pageIndex - 1);
   });
 
   elements.nextPageButton.addEventListener('click', () => {
-    const chapter = currentChapter();
-    state.pageIndex = Math.min((chapter?.pages.length || 1) - 1, state.pageIndex + 1);
-    renderReader();
+    goToPageIndex(state.pageIndex + 1);
   });
 
+  elements.backToLibraryButton.addEventListener('click', showLibrary);
+  document.addEventListener('keydown', handleReaderKeyboard);
   elements.pageText.addEventListener('mouseup', syncSelection);
   elements.pageText.addEventListener('keyup', syncSelection);
 
@@ -92,47 +94,54 @@ function bindEvents() {
 
 async function refreshBooks(preferredBookId) {
   state.books = await api.listBooks();
-  renderBookList();
-  const selectedId = preferredBookId || state.currentBook?.manifest.id || state.books[0]?.id;
-  if (selectedId) {
-    await loadBook(selectedId);
-  } else {
-    renderEmpty();
-  }
+  renderLibrary();
+  if (preferredBookId) await loadBook(preferredBookId);
+  else if (state.view === 'reader' && state.currentBook) renderReader();
+  else showLibrary();
 }
 
 async function loadBook(bookId) {
   state.currentBook = await api.loadBook(bookId);
+  state.view = 'reader';
   state.chapterIndex = 0;
   state.pageIndex = 0;
+  state.pageTurn = 'none';
   state.selectedText = '';
-  renderBookList();
+  renderLibrary();
   renderReader();
+  showReader();
   await refreshSidebars();
 }
 
-function renderBookList() {
-  elements.bookList.innerHTML = '';
+function renderLibrary() {
+  elements.libraryBookGrid.innerHTML = '';
+  elements.libraryStats.textContent = state.books.length ? `${state.books.length} 本书` : '暂无书籍';
   if (!state.books.length) {
-    elements.bookList.append(emptyCard('暂无书籍'));
+    const empty = document.createElement('div');
+    empty.className = 'library-empty';
+    empty.textContent = '暂无书籍，先导入一本 EPUB、PDF、TXT 或 Markdown。';
+    elements.libraryBookGrid.append(empty);
     return;
   }
   for (const book of state.books) {
-    const row = document.createElement('div');
-    row.className = `book-row ${book.id === state.currentBook?.manifest.id ? 'active' : ''}`;
-    row.innerHTML = `
-      <div class="book-row-title">${escapeHtml(book.title)}</div>
-      <div class="book-row-meta">${escapeHtml(book.author || '未知作者')} · ${book.chapterIds.length} 章</div>
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = `library-book-card ${book.id === state.currentBook?.manifest.id ? 'active' : ''}`;
+    card.innerHTML = `
+      ${renderLibraryCover(book)}
+      <div class="library-book-title">${escapeHtml(book.title)}</div>
+      <div class="library-book-meta">${escapeHtml(book.author || '未知作者')} · ${book.chapterIds.length} 个目录项</div>
     `;
-    row.addEventListener('click', () => loadBook(book.id));
-    elements.bookList.append(row);
+    card.addEventListener('click', () => loadBook(book.id));
+    elements.libraryBookGrid.append(card);
   }
 }
 
 function renderEmpty() {
   elements.bookTitle.textContent = '未选择书籍';
   elements.bookMeta.textContent = '';
-  elements.chapterSelect.innerHTML = '';
+  elements.chapterList.innerHTML = '';
+  elements.chapterCount.textContent = '未选择书籍';
   elements.chapterTitle.textContent = '';
   elements.pageText.textContent = '';
   elements.pageIndicator.textContent = '0 / 0';
@@ -143,6 +152,19 @@ function renderEmpty() {
   elements.summaryList.innerHTML = '';
 }
 
+function showLibrary() {
+  state.view = 'library';
+  elements.libraryView.classList.remove('is-hidden');
+  elements.readerView.classList.add('is-hidden');
+  renderLibrary();
+}
+
+function showReader() {
+  state.view = 'reader';
+  elements.libraryView.classList.add('is-hidden');
+  elements.readerView.classList.remove('is-hidden');
+}
+
 function renderReader() {
   const book = state.currentBook;
   if (!book) {
@@ -151,17 +173,47 @@ function renderReader() {
   }
 
   elements.bookTitle.textContent = book.manifest.title;
-  elements.bookMeta.textContent = `${book.manifest.author || '未知作者'} · ${book.manifest.language}`;
-  elements.chapterSelect.innerHTML = book.chapters
-    .map((chapter, index) => `<option value="${index}" ${index === state.chapterIndex ? 'selected' : ''}>${escapeHtml(chapter.title)}</option>`)
-    .join('');
+  elements.bookMeta.textContent = `${book.manifest.author || '未知作者'} · ${book.manifest.language} · ${book.chapters.length} 个目录项`;
+  renderChapterList(book);
 
   const chapter = currentChapter();
-  const page = currentPage();
+  state.pageIndex = clampPageIndex(state.pageIndex);
   elements.chapterTitle.textContent = chapter?.title || '';
-  renderPageContent(chapter, page);
-  elements.pageIndicator.textContent = chapter ? `${state.pageIndex + 1} / ${chapter.pages.length}` : '0 / 0';
+  renderChapterContent(chapter);
+  elements.bookPage.scrollTop = 0;
+  updatePagePosition();
   elements.selectedText.textContent = state.selectedText || '未选择文本';
+}
+
+function renderChapterList(book) {
+  elements.chapterList.innerHTML = '';
+  elements.chapterCount.textContent = `${book.chapters.length} 个目录项 · 当前第 ${state.chapterIndex + 1} 项`;
+  book.chapters.forEach((chapter, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `chapter-row ${index === state.chapterIndex ? 'active' : ''}`;
+    button.innerHTML = `
+      <div class="chapter-row-title">
+        <span class="chapter-row-index">${String(index + 1).padStart(2, '0')}</span>
+        <span class="chapter-row-name">${escapeHtml(chapter.title)}</span>
+      </div>
+      <div class="chapter-row-meta">${displayPagesForChapter(chapter).length} 页</div>
+    `;
+    button.addEventListener('click', () => changeChapter(index));
+    elements.chapterList.append(button);
+  });
+
+  elements.chapterList.querySelector('.chapter-row.active')?.scrollIntoView({ block: 'nearest' });
+}
+
+function changeChapter(index) {
+  if (!state.currentBook || index === state.chapterIndex) return;
+  state.chapterIndex = index;
+  state.pageIndex = 0;
+  state.pageTurn = 'none';
+  state.selectedText = '';
+  window.getSelection()?.removeAllRanges();
+  renderReader();
 }
 
 async function refreshSidebars() {
@@ -255,7 +307,7 @@ async function askAgent(mode) {
     const result = await api.ask({
       bookId: book.manifest.id,
       chapterId: chapter.id,
-      pageIndex: state.pageIndex,
+      pageIndex: currentContextPageIndex(),
       selectedText: state.selectedText,
       question,
       mode,
@@ -278,7 +330,7 @@ async function saveSelectedVocab() {
     await api.saveVocab({
       bookId: book.manifest.id,
       chapterId: chapter.id,
-      pageIndex: state.pageIndex,
+      pageIndex: currentContextPageIndex(),
       term: state.selectedText.trim(),
       translation: '待复习',
       sourceSentence: page?.text || state.selectedText.trim(),
@@ -299,7 +351,7 @@ async function saveSelectedHighlight() {
     await api.saveHighlight({
       bookId: book.manifest.id,
       chapterId: chapter.id,
-      pageIndex: state.pageIndex,
+      pageIndex: currentContextPageIndex(),
       text: state.selectedText.trim(),
       note: elements.questionInput.value.trim(),
     });
@@ -331,9 +383,23 @@ function buildQuestion(mode) {
 }
 
 function syncSelection() {
-  const selection = window.getSelection()?.toString().trim() || '';
-  state.selectedText = selection;
-  elements.selectedText.textContent = selection || '未选择文本';
+  const selection = window.getSelection();
+  const text = selection?.toString().trim() || '';
+  state.selectedText = text;
+  elements.selectedText.textContent = text || '未选择文本';
+}
+
+function handleReaderKeyboard(event) {
+  if (state.view !== 'reader') return;
+  if (['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName || '')) return;
+  if (event.key === 'ArrowLeft') {
+    event.preventDefault();
+    goToPageIndex(state.pageIndex - 1);
+  }
+  if (event.key === 'ArrowRight') {
+    event.preventDefault();
+    goToPageIndex(state.pageIndex + 1);
+  }
 }
 
 function switchTab(name) {
@@ -366,30 +432,119 @@ function currentChapter() {
 }
 
 function currentPage() {
-  return currentChapter()?.pages[state.pageIndex] || null;
+  return currentDisplayPages()[state.pageIndex] || null;
 }
 
-function renderPageContent(chapter, page) {
-  elements.pageText.innerHTML = '';
-  if (!page) return;
+function clampPageIndex(index) {
+  const lastIndex = Math.max(0, currentDisplayPages().length - 1);
+  return Math.min(Math.max(0, index), lastIndex);
+}
 
+function goToPageIndex(index) {
+  const targetIndex = clampPageIndex(index);
+  if (targetIndex === state.pageIndex) return;
+  state.pageTurn = targetIndex > state.pageIndex ? 'forward' : 'backward';
+  state.pageIndex = targetIndex;
+  renderCurrentPage();
+  updatePagePosition();
+}
+
+function updatePagePosition() {
+  const total = currentDisplayPages().length;
+  state.pageIndex = clampPageIndex(state.pageIndex);
+  elements.pageIndicator.textContent = total ? `${state.pageIndex + 1} / ${total} 页` : '0 / 0';
+  elements.prevPageButton.disabled = state.pageIndex <= 0;
+  elements.nextPageButton.disabled = !total || state.pageIndex >= total - 1;
+}
+
+function currentDisplayPages() {
+  return displayPagesForChapter(currentChapter());
+}
+
+function displayPagesForChapter(chapter) {
+  if (!chapter) return [];
+  const text = String(chapter.text || '').trim();
+  if (!text) return chapter.pages || [{ index: 0, text: '', startOffset: 0, endOffset: 0 }];
+
+  const pages = [];
+  let start = 0;
+  while (start < text.length) {
+    const end = findDisplayPageEnd(text, start);
+    pages.push({
+      index: pages.length,
+      text: text.slice(start, end).trim(),
+      startOffset: start,
+      endOffset: end,
+    });
+    start = end;
+    while (text[start] === '\n' || text[start] === ' ') start += 1;
+  }
+  return pages.length ? pages : [{ index: 0, text: '', startOffset: 0, endOffset: 0 }];
+}
+
+function findDisplayPageEnd(text, start) {
+  const hardEnd = Math.min(start + DISPLAY_PAGE_SIZE, text.length);
+  if (hardEnd >= text.length) return text.length;
+
+  const minEnd = start + Math.floor(DISPLAY_PAGE_SIZE * 0.58);
+  const windowText = text.slice(minEnd, hardEnd);
+  const paragraphBreak = windowText.lastIndexOf('\n\n');
+  if (paragraphBreak >= 0) return minEnd + paragraphBreak + 2;
+  const lineBreak = windowText.lastIndexOf('\n');
+  if (lineBreak >= 0) return minEnd + lineBreak + 1;
+  const sentenceBreak = Math.max(windowText.lastIndexOf('. '), windowText.lastIndexOf('? '), windowText.lastIndexOf('! '));
+  if (sentenceBreak >= 0) return minEnd + sentenceBreak + 2;
+  const space = windowText.lastIndexOf(' ');
+  return space >= 0 ? minEnd + space + 1 : hardEnd;
+}
+
+function currentContextPageIndex() {
+  const chapter = currentChapter();
+  const displayPage = currentPage();
+  if (!chapter || !displayPage) return 0;
+  const contextPage = chapter.pages.find(
+    (page) => displayPage.startOffset >= page.startOffset && displayPage.startOffset < page.endOffset,
+  );
+  return contextPage?.index ?? 0;
+}
+
+function renderChapterContent() {
+  renderCurrentPage();
+}
+
+function renderCurrentPage() {
+  const chapter = currentChapter();
+  const page = currentPage();
+  elements.pageText.innerHTML = '';
+  elements.bookPage.scrollTop = 0;
+  elements.pageText.classList.remove('turn-forward', 'turn-backward');
+  if (!chapter || !page) return;
+  renderPageContent(elements.pageText, chapter, page);
+  if (state.pageTurn !== 'none') {
+    void elements.pageText.offsetWidth;
+    elements.pageText.classList.add(state.pageTurn === 'forward' ? 'turn-forward' : 'turn-backward');
+  }
+  state.pageTurn = 'none';
+}
+
+function renderPageContent(container, chapter, page) {
   const images = imagesForPage(chapter, page);
   let cursor = 0;
   for (const image of images) {
     const offset = Math.max(cursor, Math.min((image.textOffset || page.startOffset) - page.startOffset, page.text.length));
-    appendTextNode(page.text.slice(cursor, offset));
-    appendImageNode(image);
+    appendTextNode(container, page.text.slice(cursor, offset));
+    appendImageNode(container, image);
     cursor = offset;
   }
-  appendTextNode(page.text.slice(cursor));
+  appendTextNode(container, page.text.slice(cursor));
 }
 
-function appendTextNode(text) {
+function appendTextNode(container, text) {
   if (!text) return;
-  elements.pageText.append(document.createTextNode(text));
+  container.append(document.createTextNode(text));
 }
 
-function appendImageNode(image) {
+function appendImageNode(container, image) {
   if (!image.dataUrl) return;
   const figure = document.createElement('figure');
   figure.className = 'reader-image';
@@ -406,12 +561,12 @@ function appendImageNode(image) {
     figure.append(figcaption);
   }
 
-  elements.pageText.append(figure);
+  container.append(figure);
 }
 
 function imagesForPage(chapter, page) {
   return (chapter?.images || [])
-    .filter((image) => image.dataUrl && (image.pageIndex ?? Math.floor((image.textOffset || 0) / 1800)) === page.index)
+    .filter((image) => image.dataUrl && (image.textOffset || 0) >= page.startOffset && (image.textOffset || 0) <= page.endOffset)
     .sort((left, right) => (left.textOffset || 0) - (right.textOffset || 0));
 }
 
@@ -427,6 +582,27 @@ function emptyCard(text) {
   div.className = 'stack-card';
   div.textContent = text;
   return div;
+}
+
+function renderLibraryCover(book) {
+  if (book.coverImage?.dataUrl) {
+    return `
+      <div class="library-book-cover has-cover-image">
+        <img src="${escapeHtml(book.coverImage.dataUrl)}" alt="${escapeHtml(book.coverImage.altText || `${book.title} 封面`)}" />
+      </div>
+    `;
+  }
+  return `
+    <div class="library-book-cover">
+      <div class="library-book-cover-title">${escapeHtml(compactTitle(book.title))}</div>
+    </div>
+  `;
+}
+
+function compactTitle(value) {
+  const text = String(value || '未命名图书').trim();
+  const chars = Array.from(text);
+  return chars.length > 28 ? `${chars.slice(0, 28).join('')}...` : text;
 }
 
 function escapeHtml(value) {

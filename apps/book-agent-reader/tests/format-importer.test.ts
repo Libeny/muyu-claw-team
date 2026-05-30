@@ -23,8 +23,10 @@ test('EPUB 导入会读取元数据、阅读顺序和章节文本', async () => 
         <dc:title>品牌差距 EPUB</dc:title>
         <dc:creator>Marty Neumeier</dc:creator>
         <dc:language>en</dc:language>
+        <meta name="cover" content="cover-img"/>
       </metadata>
       <manifest>
+        <item id="cover-img" href="cover.jpg" media-type="image/jpeg"/>
         <item id="chapter-1" href="chapter1.xhtml" media-type="application/xhtml+xml"/>
         <item id="chapter-2" href="chapter2.xhtml" media-type="application/xhtml+xml"/>
       </manifest>
@@ -42,6 +44,7 @@ test('EPUB 导入会读取元数据、阅读顺序和章节文本', async () => 
     'OPS/chapter2.xhtml',
     `<html><body><h1>价值</h1><p>Brand value becomes useful when it changes decisions.</p></body></html>`,
   );
+  zip.file('OPS/cover.jpg', Buffer.from([0xff, 0xd8, 0xff, 0xd9]));
 
   const imported = await importEpubBook(await zip.generateAsync({ type: 'nodebuffer' }));
 
@@ -49,6 +52,7 @@ test('EPUB 导入会读取元数据、阅读顺序和章节文本', async () => 
   assert.equal(imported.manifest.author, 'Marty Neumeier');
   assert.equal(imported.manifest.language, 'en');
   assert.equal(imported.manifest.sourceType, 'epub');
+  assert.match(imported.manifest.coverImage?.dataUrl ?? '', /^data:image\/jpeg;base64,/);
   assert.equal(imported.chapters.length, 2);
   assert.equal(imported.chapters[0]?.title, '信任');
   assert.equal(imported.chapters[0]?.images?.[0]?.altText, '货币演化图');
