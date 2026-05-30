@@ -1,5 +1,7 @@
 const api = window.bookAgentReader || createHttpApi();
-const DISPLAY_PAGE_SIZE = 900;
+const DEFAULT_DISPLAY_PAGE_SIZE = 900;
+const MIN_DISPLAY_PAGE_SIZE = 260;
+const MAX_DISPLAY_PAGE_SIZE = 1800;
 
 const state = {
   books: [],
@@ -8,6 +10,8 @@ const state = {
   chapterIndex: 0,
   pageIndex: 0,
   pageTurn: 'none',
+  displayPageSize: DEFAULT_DISPLAY_PAGE_SIZE,
+  repaginateTimer: null,
   selectedText: '',
 };
 
@@ -76,6 +80,7 @@ function bindEvents() {
 
   elements.backToLibraryButton.addEventListener('click', showLibrary);
   document.addEventListener('keydown', handleReaderKeyboard);
+  window.addEventListener('resize', scheduleRepaginate);
   elements.pageText.addEventListener('mouseup', syncSelection);
   elements.pageText.addEventListener('keyup', syncSelection);
 
@@ -108,8 +113,8 @@ async function loadBook(bookId) {
   state.pageTurn = 'none';
   state.selectedText = '';
   renderLibrary();
-  renderReader();
   showReader();
+  renderReader();
   await refreshSidebars();
 }
 
@@ -174,6 +179,7 @@ function renderReader() {
 
   elements.bookTitle.textContent = book.manifest.title;
   elements.bookMeta.textContent = `${book.manifest.author || '未知作者'} · ${book.manifest.language} · ${book.chapters.length} 个目录项`;
+  updateDisplayPageSize();
   renderChapterList(book);
 
   const chapter = currentChapter();
@@ -441,6 +447,17 @@ function clampPageIndex(index) {
 }
 
 function goToPageIndex(index) {
+  const total = currentDisplayPages().length;
+  if (!total) return;
+  if (index < 0) {
+    goToAdjacentChapter(-1);
+    return;
+  }
+  if (index >= total) {
+    goToAdjacentChapter(1);
+    return;
+  }
+
   const targetIndex = clampPageIndex(index);
   if (targetIndex === state.pageIndex) return;
   state.pageTurn = targetIndex > state.pageIndex ? 'forward' : 'backward';
@@ -449,12 +466,29 @@ function goToPageIndex(index) {
   updatePagePosition();
 }
 
+function goToAdjacentChapter(direction) {
+  if (!state.currentBook) return;
+  const targetChapterIndex = state.chapterIndex + direction;
+  if (targetChapterIndex < 0 || targetChapterIndex >= state.currentBook.chapters.length) return;
+
+  state.chapterIndex = targetChapterIndex;
+  state.pageTurn = direction > 0 ? 'forward' : 'backward';
+  state.selectedText = '';
+  window.getSelection()?.removeAllRanges();
+
+  const targetPages = displayPagesForChapter(currentChapter());
+  state.pageIndex = direction > 0 ? 0 : Math.max(0, targetPages.length - 1);
+  renderReader();
+}
+
 function updatePagePosition() {
   const total = currentDisplayPages().length;
+  const isFirstChapter = state.chapterIndex <= 0;
+  const isLastChapter = !state.currentBook || state.chapterIndex >= state.currentBook.chapters.length - 1;
   state.pageIndex = clampPageIndex(state.pageIndex);
   elements.pageIndicator.textContent = total ? `${state.pageIndex + 1} / ${total} 页` : '0 / 0';
-  elements.prevPageButton.disabled = state.pageIndex <= 0;
-  elements.nextPageButton.disabled = !total || state.pageIndex >= total - 1;
+  elements.prevPageButton.disabled = isFirstChapter && state.pageIndex <= 0;
+  elements.nextPageButton.disabled = !total || (isLastChapter && state.pageIndex >= total - 1);
 }
 
 function currentDisplayPages() {
@@ -469,7 +503,7 @@ function displayPagesForChapter(chapter) {
   const pages = [];
   let start = 0;
   while (start < text.length) {
-    const end = findDisplayPageEnd(text, start);
+    const end = findDisplayPageEnd(text, start, state.displayPageSize, chapter);
     pages.push({
       index: pages.length,
       text: text.slice(start, end).trim(),
@@ -482,20 +516,98 @@ function displayPagesForChapter(chapter) {
   return pages.length ? pages : [{ index: 0, text: '', startOffset: 0, endOffset: 0 }];
 }
 
-function findDisplayPageEnd(text, start) {
-  const hardEnd = Math.min(start + DISPLAY_PAGE_SIZE, text.length);
+function findDisplayPageEnd(text, start, pageSize, chapter) {
+  let hardEnd = Math.min(start + pageSize, text.length);
   if (hardEnd >= text.length) return text.length;
 
-  const minEnd = start + Math.floor(DISPLAY_PAGE_SIZE * 0.58);
+  const nextImageOffset = nextImageTextOffset(chapter, start, hardEnd);
+  if (nextImageOffset >= 0) {
+    const imageLead = nextImageOffset - start;
+    if (imageLead > Math.floor(pageSize * 0.42)) {
+      hardEnd = nextImageOffset;
+    } else {
+      hardEnd = Math.min(hardEnd, start + Math.floor(pageSize * 0.42));
+    }
+  }
+
+  const minEnd = Math.min(hardEnd - 1, start + Math.floor(pageSize * 0.5));
   const windowText = text.slice(minEnd, hardEnd);
   const paragraphBreak = windowText.lastIndexOf('\n\n');
-  if (paragraphBreak >= 0) return minEnd + paragraphBreak + 2;
+  if (paragraphBreak >= 0) return Math.max(start + 1, minEnd + paragraphBreak + 2);
   const lineBreak = windowText.lastIndexOf('\n');
-  if (lineBreak >= 0) return minEnd + lineBreak + 1;
+  if (lineBreak >= 0) return Math.max(start + 1, minEnd + lineBreak + 1);
   const sentenceBreak = Math.max(windowText.lastIndexOf('. '), windowText.lastIndexOf('? '), windowText.lastIndexOf('! '));
-  if (sentenceBreak >= 0) return minEnd + sentenceBreak + 2;
+  if (sentenceBreak >= 0) return Math.max(start + 1, minEnd + sentenceBreak + 2);
   const space = windowText.lastIndexOf(' ');
-  return space >= 0 ? minEnd + space + 1 : hardEnd;
+  return Math.max(start + 1, space >= 0 ? minEnd + space + 1 : hardEnd);
+}
+
+function nextImageTextOffset(chapter, start, end) {
+  const image = (chapter?.images || [])
+    .map((item) => item.textOffset ?? 0)
+    .filter((offset) => offset >= start && offset < end)
+    .sort((left, right) => left - right)[0];
+  return Number.isFinite(image) ? image : -1;
+}
+
+function updateDisplayPageSize() {
+  const nextSize = calculateDisplayPageSize();
+  if (Math.abs(nextSize - state.displayPageSize) < 24) return false;
+  state.displayPageSize = nextSize;
+  return true;
+}
+
+function calculateDisplayPageSize() {
+  const pageStyle = getComputedStyle(elements.bookPage);
+  const textStyle = getComputedStyle(elements.pageText);
+  const horizontalPadding = px(pageStyle.paddingLeft) + px(pageStyle.paddingRight);
+  const verticalPadding = px(pageStyle.paddingTop) + px(pageStyle.paddingBottom);
+  const availableWidth = Math.max(320, elements.bookPage.clientWidth - horizontalPadding);
+  const availableHeight = Math.max(
+    260,
+    elements.bookPage.clientHeight - verticalPadding - elements.chapterTitle.offsetHeight - 24,
+  );
+  const fontSize = px(textStyle.fontSize) || 23;
+  const lineHeight = px(textStyle.lineHeight) || fontSize * 1.64;
+  const averageCharWidth = estimateAverageCharWidth(textStyle.fontFamily, fontSize);
+  const charsPerLine = Math.max(18, Math.floor(availableWidth / averageCharWidth));
+  const lineCount = Math.max(8, Math.floor(availableHeight / lineHeight));
+  const estimated = Math.floor(charsPerLine * lineCount * 0.78);
+  return Math.max(MIN_DISPLAY_PAGE_SIZE, Math.min(MAX_DISPLAY_PAGE_SIZE, estimated));
+}
+
+function estimateAverageCharWidth(fontFamily, fontSize) {
+  const canvas = estimateAverageCharWidth.canvas || (estimateAverageCharWidth.canvas = document.createElement('canvas'));
+  const context = canvas.getContext('2d');
+  if (!context) return fontSize * 0.52;
+  context.font = `${fontSize}px ${fontFamily}`;
+  return Math.max(7, context.measureText('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ').width / 52);
+}
+
+function px(value) {
+  const parsed = Number.parseFloat(value);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function scheduleRepaginate() {
+  if (state.view !== 'reader' || !state.currentBook) return;
+  clearTimeout(state.repaginateTimer);
+  state.repaginateTimer = setTimeout(repaginateCurrentChapter, 120);
+}
+
+function repaginateCurrentChapter() {
+  if (!state.currentBook) return;
+  const currentOffset = currentPage()?.startOffset ?? 0;
+  if (!updateDisplayPageSize()) return;
+  const pages = currentDisplayPages();
+  state.pageIndex = pageIndexForOffset(pages, currentOffset);
+  state.pageTurn = 'none';
+  renderReader();
+}
+
+function pageIndexForOffset(pages, offset) {
+  const index = pages.findIndex((page) => offset >= page.startOffset && offset < page.endOffset);
+  return index >= 0 ? index : Math.max(0, pages.length - 1);
 }
 
 function currentContextPageIndex() {

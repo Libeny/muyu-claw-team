@@ -64,9 +64,16 @@ test('阅读正文按单页左右翻页渲染，并保留当前位置页码给�
   assert.match(script, /function renderCurrentPage/);
   assert.match(script, /function handleReaderKeyboard/);
   assert.match(script, /function displayPagesForChapter/);
+  assert.match(script, /function calculateDisplayPageSize/);
+  assert.match(script, /function scheduleRepaginate/);
   assert.match(script, /function currentContextPageIndex/);
   assert.match(script, /function goToPageIndex/);
+  assert.match(script, /function goToAdjacentChapter/);
+  assert.match(script, /index >= total/);
+  assert.match(script, /window\.addEventListener\('resize', scheduleRepaginate\)/);
+  assert.match(script, /state\.pageIndex = direction > 0 \? 0 : Math\.max\(0, targetPages\.length - 1\)/);
   assert.match(script, /pageIndex: currentContextPageIndex\(\)/);
+  assert.doesNotMatch(script, /const DISPLAY_PAGE_SIZE = 900/);
   assert.match(styles, /@keyframes turnForward/);
   assert.match(styles, /@keyframes turnBackward/);
 });
