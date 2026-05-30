@@ -25,6 +25,10 @@ export interface ImageAsset {
   bookId: string;
   chapterId: string;
   sourcePath: string;
+  mediaType?: string;
+  dataUrl?: string;
+  textOffset?: number;
+  pageIndex?: number;
   altText: string;
   caption: string;
   contextText: string;

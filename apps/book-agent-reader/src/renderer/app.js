@@ -159,7 +159,7 @@ function renderReader() {
   const chapter = currentChapter();
   const page = currentPage();
   elements.chapterTitle.textContent = chapter?.title || '';
-  elements.pageText.textContent = renderPageText(chapter, page);
+  renderPageContent(chapter, page);
   elements.pageIndicator.textContent = chapter ? `${state.pageIndex + 1} / ${chapter.pages.length}` : '0 / 0';
   elements.selectedText.textContent = state.selectedText || '未选择文本';
 }
@@ -369,8 +369,57 @@ function currentPage() {
   return currentChapter()?.pages[state.pageIndex] || null;
 }
 
-function renderPageText(chapter, page) {
-  return page?.text || '';
+function renderPageContent(chapter, page) {
+  elements.pageText.innerHTML = '';
+  if (!page) return;
+
+  const images = imagesForPage(chapter, page);
+  let cursor = 0;
+  for (const image of images) {
+    const offset = Math.max(cursor, Math.min((image.textOffset || page.startOffset) - page.startOffset, page.text.length));
+    appendTextNode(page.text.slice(cursor, offset));
+    appendImageNode(image);
+    cursor = offset;
+  }
+  appendTextNode(page.text.slice(cursor));
+}
+
+function appendTextNode(text) {
+  if (!text) return;
+  elements.pageText.append(document.createTextNode(text));
+}
+
+function appendImageNode(image) {
+  if (!image.dataUrl) return;
+  const figure = document.createElement('figure');
+  figure.className = 'reader-image';
+
+  const img = document.createElement('img');
+  img.src = image.dataUrl;
+  img.alt = meaningfulImageText(image.altText) || '';
+  figure.append(img);
+
+  const caption = [meaningfulImageText(image.caption), meaningfulImageText(image.altText)].filter(Boolean)[0];
+  if (caption) {
+    const figcaption = document.createElement('figcaption');
+    figcaption.textContent = caption;
+    figure.append(figcaption);
+  }
+
+  elements.pageText.append(figure);
+}
+
+function imagesForPage(chapter, page) {
+  return (chapter?.images || [])
+    .filter((image) => image.dataUrl && (image.pageIndex ?? Math.floor((image.textOffset || 0) / 1800)) === page.index)
+    .sort((left, right) => (left.textOffset || 0) - (right.textOffset || 0));
+}
+
+function meaningfulImageText(value) {
+  const normalized = String(value || '').replace(/\s+/g, ' ').trim();
+  if (!normalized) return '';
+  if (['image', 'img', 'picture', 'photo', 'graphic', 'figure'].includes(normalized.toLowerCase())) return '';
+  return normalized;
 }
 
 function emptyCard(text) {

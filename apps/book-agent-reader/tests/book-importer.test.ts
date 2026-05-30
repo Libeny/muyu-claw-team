@@ -31,7 +31,7 @@ test('文本导入会按一级标题拆成章节并生成页面', async () => {
   assert.equal(loaded.chapters.length, 2);
 });
 
-test('EPUB 导入会按 NCX 目录锚点拆分单文件长正文，并过滤无意义图片 alt', async () => {
+test('EPUB 导入会按 NCX 目录锚点拆分单文件长正文，并保留图片文件', async () => {
   const zip = new JSZip();
   zip.file('mimetype', 'application/epub+zip');
   zip.file('META-INF/container.xml', '<container><rootfiles><rootfile full-path="content.opf"/></rootfiles></container>');
@@ -65,6 +65,8 @@ test('EPUB 导入会按 NCX 目录锚点拆分单文件长正文，并过滤无�
       <figure><img alt="Currency trust diagram" src="images/trust.jpg"/><figcaption>Currency mirrors trust.</figcaption></figure>
     </body></html>`,
   );
+  zip.file('images/placeholder.jpg', Buffer.from([0xff, 0xd8, 0xff, 0xd9]));
+  zip.file('images/trust.jpg', Buffer.from([0xff, 0xd8, 0xff, 0xd9]));
 
   const imported = await importEpubBook(await zip.generateAsync({ type: 'nodebuffer' }));
 
@@ -74,7 +76,10 @@ test('EPUB 导入会按 NCX 目录锚点拆分单文件长正文，并过滤无�
   );
   assert.match(imported.chapters[1]?.text ?? '', /people talk about branding/);
   assert.match(imported.chapters[2]?.text ?? '', /A brand is not a logo\.\nIt is a person's gut feeling/);
-  assert.equal(imported.chapters[1]?.images?.length ?? 0, 0);
+  assert.equal(imported.chapters[1]?.images?.length ?? 0, 1);
+  assert.equal(imported.chapters[1]?.images?.[0]?.altText, 'Image');
+  assert.match(imported.chapters[1]?.images?.[0]?.dataUrl ?? '', /^data:image\/jpeg;base64,/);
   assert.equal(imported.chapters[2]?.images?.length ?? 0, 1);
   assert.equal(imported.chapters[2]?.images?.[0]?.altText, 'Currency trust diagram');
+  assert.match(imported.chapters[2]?.images?.[0]?.dataUrl ?? '', /^data:image\/jpeg;base64,/);
 });
