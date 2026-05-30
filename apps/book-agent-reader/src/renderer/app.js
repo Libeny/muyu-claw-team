@@ -521,16 +521,11 @@ function findDisplayPageEnd(text, start, pageSize, chapter) {
   if (hardEnd >= text.length) return text.length;
 
   const nextImageOffset = nextImageTextOffset(chapter, start, hardEnd);
-  if (nextImageOffset >= 0) {
-    const imageLead = nextImageOffset - start;
-    if (imageLead > Math.floor(pageSize * 0.42)) {
-      hardEnd = nextImageOffset;
-    } else {
-      hardEnd = Math.min(hardEnd, start + Math.floor(pageSize * 0.42));
-    }
+  if (nextImageOffset >= start + Math.floor(pageSize * 0.78)) {
+    hardEnd = nextImageOffset;
   }
 
-  const minEnd = Math.min(hardEnd - 1, start + Math.floor(pageSize * 0.5));
+  const minEnd = Math.min(hardEnd - 1, start + Math.floor(pageSize * 0.82));
   const windowText = text.slice(minEnd, hardEnd);
   const paragraphBreak = windowText.lastIndexOf('\n\n');
   if (paragraphBreak >= 0) return Math.max(start + 1, minEnd + paragraphBreak + 2);

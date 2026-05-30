@@ -74,6 +74,8 @@ test('阅读正文按单页左右翻页渲染，并保留当前位置页码给�
   assert.match(script, /state\.pageIndex = direction > 0 \? 0 : Math\.max\(0, targetPages\.length - 1\)/);
   assert.match(script, /pageIndex: currentContextPageIndex\(\)/);
   assert.doesNotMatch(script, /const DISPLAY_PAGE_SIZE = 900/);
+  assert.match(script, /pageSize \* 0\.82/);
+  assert.doesNotMatch(script, /pageSize \* 0\.5/);
   assert.match(styles, /@keyframes turnForward/);
   assert.match(styles, /@keyframes turnBackward/);
 });

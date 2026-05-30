@@ -10,6 +10,9 @@ const __dirname = path.dirname(__filename);
 
 let mainWindow: BrowserWindow | null = null;
 
+// The reader does not use browser passwords/cookies; avoid Chromium keychain prompts on macOS.
+app.commandLine.appendSwitch('use-mock-keychain');
+
 async function createWindow(): Promise<void> {
   const homeDir = process.env.BOOK_AGENT_READER_HOME || path.join(app.getPath('userData'), 'library');
   const runtimeConfig = loadRuntimeConfig({ userDataDir: app.getPath('userData') });
