@@ -8,4 +8,7 @@ users/*
 !users/.gitkeep
 var/data/
 var/logs/
+apps/book-agent-reader/dist/
+apps/book-agent-reader/var/
+apps/book-agent-reader/release/
 .DS_Store

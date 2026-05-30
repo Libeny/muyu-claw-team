@@ -1,0 +1,61 @@
+{
+  "name": "book-agent-reader",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "build": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\" && tsc && node scripts/copy-renderer.mjs",
+    "dev": "npm run build && electron dist/main/main.js",
+    "web": "npm run build && node dist/server/server.js",
+    "package:mac": "npm run build && electron-builder --mac dmg dir",
+    "test": "node --test --import tsx \"tests/**/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "build": {
+    "appId": "team.muyu.book-agent-reader",
+    "productName": "图书智能伴读器",
+    "directories": {
+      "output": "release"
+    },
+    "electronDist": "node_modules/electron/dist",
+    "files": [
+      "dist/**/*",
+      "package.json",
+      ".env.local.example"
+    ],
+    "asar": true,
+    "mac": {
+      "category": "public.app-category.productivity",
+      "identity": "-",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64"
+          ]
+        },
+        {
+          "target": "dir",
+          "arch": [
+            "arm64"
+          ]
+        }
+      ]
+    },
+    "dmg": {
+      "sign": false
+    }
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.2.92",
+    "jszip": "^3.10.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "electron": "^42.3.0",
+    "electron-builder": "^26.8.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.0.0"
+  }
+}
